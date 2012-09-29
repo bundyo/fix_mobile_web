@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+    <head>
+        <meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width" name="viewport" />
+        <title>Forms break when transformed or not</title>
+        <style type="text/css">
+            body {
+                background: #222;
+                color: #fff;
+                font: 14px Arial, Helvetica, sans-serif;
+            }
+
+            #broken {
+                -webkit-transform: translate(140px);
+            }
+
+            #fixed {
+                -webkit-transform: translate(140px);
+            }
+
+            #broken,
+            #fixed {
+                position: relative;
+                top: 20px;
+            }
+
+            #broken,
+            #original,
+            #fixed {
+                width: 150px;
+                height: 100px;
+            }
+
+            input {
+                width: 120px;
+                background: #333;
+                color: #fff;
+                border: 1px solid #111;
+            }
+
+            #fixed input {
+                text-align: left;
+                -webkit-user-modify: read-write-plaintext-only;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="original">
+            Non transformed container<br/>
+            <input type="email" />
+        </div>
+        <div id="broken">
+            Translated container<br/>
+            <input type="email" />
+        </div>
+        <div id="fixed">
+            Translated and fixed container<br/>
+            <input type="email" />
+        </div>
+    </body>
+</html>

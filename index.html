@@ -1,66 +1,309 @@
 <!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Fixing the Mobile Web by bundyo</title>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Fixing the Mobile Web | Tips and tricks that can save your sanity</title>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>Fixing the Mobile Web</h1>
-        <p>tips and tricks that can save your sanity</p>
+    <link href="css/mobileweb.less" rel="stylesheet/less" type="text/css" />
+    <script type="text/javascript" src="js/less.js"></script>
 
-        <p class="view"><a href="https://github.com/bundyo/fix_mobile_web">View the Project on GitHub <small>bundyo/fix_mobile_web</small></a></p>
+    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+</head>
 
+<body class="impress-not-supported">
 
-        <ul>
-          <li><a href="https://github.com/bundyo/fix_mobile_web/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/bundyo/fix_mobile_web/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/bundyo/fix_mobile_web">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h3>Welcome to GitHub Pages.</h3>
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<div id="impress" data-transition-duration="500" data-max-scale="2">
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/bundyo">bundyo</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
+    <div id="overview" class="step" data-x="4000" data-y="1500" data-scale="10" data-rotate="4680">
     </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
-  </body>
+
+    <div id="title" class="step slide" data-x="0" data-y="0">
+        <h1>
+            Fixing the Mobile Web
+            <span class="underline">tips and tricks that can save your sanity</span>
+        </h1>
+        <div class="bottom center note">
+            Kamen Bundev (Bundyo)<br />
+            Twitter ID: @bundyo<br />
+            Kendo UI Mobile Team<br />
+            Telerik<br />
+        </div>
+    </div>
+
+    <div class="step slide first" data-x="346" data-y="-600" data-rotate="120">
+        <q>
+            Smartphones <strong>changed</strong> the Web landscape.<br/>
+        </q>
+    </div>
+
+    <div class="step slide hidden last" data-x="346" data-y="-600" data-rotate="120">
+        <q>
+            Smartphones <strong>changed</strong> the Web landscape.<br/><br/>
+            <div class="flyin">We grew to love them and support them.</div>
+        </q>
+    </div>
+
+    <div class="step slide first" data-x="692" data-y="0" data-rotate="240">
+        <q>It's a <strong>love</strong> / <strong>hate</strong> relationship</q>
+    </div>
+
+    <div class="step slide hidden" data-x="692" data-y="0" data-rotate="240">
+        <q>
+            It's a <strong>love</strong> / <strong>hate</strong> relationship<br/><br/>
+            <div class="flyin">We <strong>LOVE</strong> them.</div>
+        </q>
+    </div>
+
+    <div class="step slide hidden last" data-x="692" data-y="0" data-rotate="240">
+        <q>
+            It's a <strong>love</strong> / <strong>hate</strong> relationship<br/><br/>
+            We <strong>LOVE</strong> them.<br/>
+            <div class="flyin-right">
+                They <strong>HATE</strong> us.
+                <img class="dalek" src="images/dalek.png" />
+            </div>
+        </q>
+    </div>
+
+    <div class="step slide" data-x="692" data-y="800" data-rotate="360">
+        <q style="margin-top: -30px">
+            <div class="center note" style="padding-bottom: 10px">Worldwide smartphone market, by OS, global sales 2011</div>
+            <table class="infotable">
+                <tr>
+                    <th>Operating System</th><th>Shipments<br/><span>(millions)</span></th><th>Market share</th><th>Annual growth</th>
+                </tr>
+                <tr>
+                    <td>Android</td><td>237.7</td><td>48.8%</td><td>244%</td></tr>
+                <tr>
+                    <td>iOS</td><td>93.1</td><td>19.1%</td><td>96%</td>
+                </tr>
+                <tr>
+                    <td>Symbian</td><td>80.1</td><td>16.4%</td><td>-29.1%</td>
+                </tr>
+                <tr>
+                    <td>BlackBerry</td><td>51.4</td><td>10.5%</td><td>5%</td>
+                </tr>
+                <tr>
+                    <td>Bada</td><td>13.2</td><td>2.7%</td><td>183.1%</td>
+                </tr>
+                <tr>
+                    <td>Windows Phone</td><td>6.8</td><td>1.4%</td><td>-43.3%</td>
+                </tr>
+                <tr>
+                    <td>Others</td><td>5.4</td><td>1.1%</td><td>14.4%</td>
+                </tr>
+                <tr>
+                    <td>Total</td><td>487.7</td><td>100%</td><td>62.7%</td>
+                </tr>
+            </table>
+            <div class="right small">according to Canalys</div>
+        </q>
+    </div>
+
+    <div class="step slide first" data-x="692" data-y="1600" data-rotate="480">
+        <q>The good news - WebKit is predominant</q>
+    </div>
+
+    <div class="step slide hidden last" data-x="692" data-y="1600" data-rotate="480">
+        <q>
+            The good news - WebKit is predominant<br/><br/>
+            <div class="flyin">The bad news - implementations vary a lot.</div>
+        </q>
+    </div>
+
+    <div class="step slide" data-x="692" data-y="2400" data-rotate="600">
+        <q class="no-height">
+            <table class="infotable centered">
+                <tr>
+                    <th>Feature</th><th>Android</th><th>iOS</th><th>BlackBerry OS</th>
+                </tr>
+                <tr>
+                    <td>HTML5 Forms</td><td>X</td><td>4.2+</td><td>+</td>
+                </tr>
+                <tr>
+                    <td>SVG</td><td>3+</td><td>+</td><td>+</td>
+                </tr>
+                <tr>
+                    <td>Masks</td><td>mostly work</td><td>+</td><td>+ (except 7.0)</td>
+                </tr>
+                <tr>
+                    <td>3D Transforms</td><td>4+ (broken in 3)</td><td>+</td><td>PBOS+</td>
+                </tr>
+                <tr>
+                    <td>WebGL</td><td>X</td><td>X (except ads)</td><td>PBOS+</td>
+                </tr>
+            </table>
+        </q>
+    </div>
+
+    <div class="step slide" data-x="346" data-y="3000" data-rotate="720">
+        <q class="no-height">
+            Lesson learned:
+            <strong>
+                Test everything you create,<br/>
+                on every device you can get<br/>
+                your hands on!
+            </strong>
+        </q>
+    </div>
+
+    <div class="step slide" data-x="1038" data-y="3000" data-rotate="840">
+        <q class="no-height">
+
+        </q>
+    </div>
+
+    <div class="step slide" data-x="3114" data-y="3000" data-rotate="960">
+        <h1>
+            <span>Use the <br /><strong>translatez(0)</strong>,<br /> Luke!</span>
+        </h1>
+    </div>
+
+    <div class="step slide" data-x="2422" data-y="3000" data-rotate="1080">
+        <div class="center middle">
+            -webkit-transform: translatez(0)<br/>
+            is the new zoom: 1;
+            <ul class="list">
+                <li>Not working at all in Android 2</li>
+                <li>Sometimes can lead to worse performance</li>
+                <li>Can break the rendering of masks</li>
+                <li>May be not enough for hardware acceleration</li>
+                <li>May lead to artifacts</li>
+                <li>Breaks form elements on Android</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="step slide" data-x="2076" data-y="2400" data-rotate="1200">
+        <h1>Performance Degradation</h1>
+    </div>
+
+    <div class="step slide" data-x="2076" data-y="1600" data-rotate="1320">
+        <q class="no-height">
+            Huge list of images,<br/>
+
+        </q>
+    </div>
+
+    <div class="step slide" data-x="2076" data-y="800" data-rotate="1440">
+        <q class="no-height">
+            Lesson learned:
+            <strong>Mind the size of your<br/>
+            accelerated elements.</strong
+        </q>
+    </div>
+
+    <div class="step slide" data-x="2076" data-y="0" data-rotate="1560">
+        <q>Slide 14</q>
+    </div>
+
+    <div class="step slide" data-x="2422" data-y="-600" data-rotate="1680">
+        <q>Slide 15</q>
+    </div>
+
+    <div class="step slide" data-x="3114" data-y="-600" data-rotate="1800">
+        <q>Slide 16</q>
+    </div>
+
+    <div class="step slide" data-x="3806" data-y="-600" data-rotate="1920">
+        <q>Slide 17</q>
+    </div>
+
+    <div class="step slide" data-x="4152" data-y="0" data-rotate="2040">
+        <q>Slide 18</q>
+    </div>
+
+    <div class="step slide" data-x="4152" data-y="800" data-rotate="2160">
+        <q>Slide 19</q>
+    </div>
+
+    <div class="step slide" data-x="4152" data-y="1600" data-rotate="2280">
+        <q>Slide 20</q>
+    </div>
+
+    <div class="step slide" data-x="4152" data-y="2400" data-rotate="2400">
+        <q>Slide 21</q>
+    </div>
+
+    <div class="step slide" data-x="3806" data-y="3000" data-rotate="2520">
+        <q>Slide 22</q>
+    </div>
+
+    <div class="step slide" data-x="6574" data-y="3000" data-rotate="2640">
+        <q>Slide 23</q>
+    </div>
+
+    <div class="step slide" data-x="5882" data-y="3000" data-rotate="2760">
+        <q>Slide 24</q>
+    </div>
+
+    <div class="step slide" data-x="5536" data-y="2400" data-rotate="2880">
+        <q>Slide 25</q>
+    </div>
+
+    <div class="step slide" data-x="5536" data-y="1600" data-rotate="3000">
+        <q>Slide 26</q>
+    </div>
+
+    <div class="step slide" data-x="5536" data-y="800" data-rotate="3120">
+        <q>Slide 27</q>
+    </div>
+
+    <div class="step slide" data-x="5536" data-y="0" data-rotate="3240">
+        <q>Slide 28</q>
+    </div>
+
+    <div class="step slide" data-x="5882" data-y="-600" data-rotate="3360">
+        <q>Slide 29</q>
+    </div>
+
+    <div class="step slide" data-x="6574" data-y="-600" data-rotate="3480">
+        <q>Slide 30</q>
+    </div>
+
+    <div class="step slide" data-x="7266" data-y="-600" data-rotate="3600">
+        <q>Slide 31</q>
+    </div>
+
+    <div class="step slide" data-x="7612" data-y="0" data-rotate="3720">
+        <q>Slide 32</q>
+    </div>
+
+    <div class="step slide" data-x="7612" data-y="800" data-rotate="3840">
+        <q>Slide 33</q>
+    </div>
+
+    <div class="step slide" data-x="7612" data-y="1600" data-rotate="3960">
+        <q>Slide 34</q>
+    </div>
+
+    <div class="step slide" data-x="7612" data-y="2400" data-rotate="4080">
+        <q>Slide 35</q>
+    </div>
+
+    <div class="step slide" data-x="6920" data-y="2400" data-rotate="4200">
+        <q>Slide 36</q>
+    </div>
+
+    <div class="step slide" data-x="7266" data-y="3000" data-rotate="4320">
+        <q>Slide 37</q>
+    </div>
+
+    <div class="step slide" data-x="7612" data-y="3600" data-rotate="4440">
+        <q>Slide 38</q>
+    </div>
+</div>
+
+<script src="js/impress.js"></script>
+<script>impress().init();</script>
+
+</body>
 </html>
