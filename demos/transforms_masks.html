@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Masks break when transformed</title>
+        <style type="text/css">
+            body {
+                background: #222;
+                color: #fff;
+                font-size: 30px;
+            }
+
+            body:after
+            {
+                 content: url("../images/icons.png"), url("images/icons_clone.png");
+                 display: none;
+            }
+
+            #broken > div {
+                /*-webkit-transform: translatez(0);*/
+                -webkit-backface-visibility: hidden;
+            }
+
+            #fixed {
+                position: relative;
+                top: 20px;
+            }
+
+            #broken > div,
+            #fixed > div {
+                width: 128px;
+                height: 128px;
+                background-color: #fff;
+                -webkit-mask-size: auto 100%;
+                -webkit-mask-position-x: 24%;
+                -webkit-mask-image: url("../images/icons.png");
+            }
+        </style>
+    </head>
+    <body>
+        <div id="broken">
+            Backface visibility: hidden
+            <div>
+
+            </div>
+        </div>
+        <div id="fixed">
+            Non transformed element
+            <div id="fixed">
+
+            </div>
+        </div>
+    </body>
+</html>

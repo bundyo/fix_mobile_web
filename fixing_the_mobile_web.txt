@@ -1,0 +1,118 @@
+Fixing the Mobile Web
+tips and tricks that can save your sanity
+
+Slide Part 1
+Smartphones changed the Web landscape.
+They introduced smaller screens and weak processors and with their exponential growth forced us, the developers, to provide special treatment for them.
+We grew to love them and support them.
+But its a love/hate relationship - we love them, they hate us.
+
+In 2011 there were at least 3 major smartphone operating systems on the global mobile landscape, that amount for 80% of the market. If we count Symbian, the number grows above 90%.
+
+Worldwide smartphone market, by operating system, by 2011 global sales
+according to Canalys
+Operating System    Shipments 2011  Market share 2011   Annual growth
+                    (millions)
+Android             237.7           48.8%               244%
+iOS                 93.1            19.1%               96%
+Symbian             80.1            16.4%               -29.1%
+BlackBerry          51.4            10.5%               5%
+Bada                13.2            2.7%                183.1%
+Windows Phone       6.8             1.4%                -43.3%
+Others              5.4             1.1%                14.4%
+Total               487.7           100%                62.7%
+
+The good news is that all the major players are using WebKit. The bad news - implementations vary a lot.
+
+Feature,Android,iOS,BlackBerry OS
+
+HTML5 Forms,X,4.2+,+
+SVG,3+,+,+
+Masks,mostly work,+,+ (except 7.0)
+3D Transforms,4+ (broken in 3),+,PBOS+
+WebGL,X,X (except ads),PBOS+
+
+As you can see from the table above, features that are supposed to work everywhere, are actually not supported on some platforms. Every operating system vendor decides what to include in their WebKit distribution, thus leading to these inconsistencies.
+
+Lesson learned: if you can, test everything you create, on every device you can get your hands on!
+
+-----------------------------
+I bet that most of you ran into strange issues while testing your sites or applications on mobile devices.
+
+/How many of you had issues with mobile support?/
+
+Things like:
+Slow performance
+Broken rendering
+Missing events
+-----------------------------
+
+The most irritating ones are the performance issues. Fortunately all that is needed to speed up the rendering is a carefully placed -webkit-transform: translatez(0). You probably know that 3D transforms trigger hardware acceleration and the element rendering gets offloaded to the mobile GPU. However translatez(0) is becoming damnation as much as salvation - welcome the new zoom: 1 for the mobile web.
+
+* 3D transforms do not work in Android 2
+* Transforming too big elements can lead to worse performance.
+* Transforms can break the rendering of masks, especially on Android.
+* 3D transform is not enough to trigger hardware acceleration on some platforms.
+* Transforms may lead to artifacts.
+* Transforms break form elements on Android.
+
+I'll now go over these one by one:
+
+Performance degradation
+
+Imagine this scenario: you have a big list of images on a page and you add a custom scroller. To speed up the scroller, you apply a translatez(0) on the list. Instead of speeding up, the scrolling gets much worse and you can actually see parts of the page redrawing when you scroll by. The issue you've just ran into is called max texture size. All graphics chips have this texture size limit and when you reach it, your texture is split into several smaller textures which are rendered separately, resulting in more calculations and generally worse performance. This is especially visible on high resolutions as on iPad 3 as there the graphics chip has to move 4 times more pixels per texture than on previous models (even though the max texture size on iPad 3 is 4 times larger, it still covers only slightly more than the screen).
+
+Lesson learned: Mind the size of your accelerated elements.
+
+To avoid this, you need to use smaller textures - in this case, apply the transform on the list items or the separate images, instead of on the whole list.
+
+Fair and Square
+
+Currently most native smartphone browsers are WebKit based. A fact that may change in the future with IE10 and Firefox advancing, but now it drives the usage of some proprietary WebKit functionality - mask images. You know what they are - images with alpha transparency which apply a non-rectangular clip mask on their element. They are mostly supported in all mobile WebKit based browsers, with the exception of BlackBerry OS 7.0, in which they don't work at all. However they do work in 6.0 and 7.1.
+
+But most issues with webkit masks you will face in Android - transforms and masks just don't get together. An example - applying -webkit-backface-visibility on a masked element in Android 4 results in a colored square. However, applying -webkit-transform: translatez(0) on a single masked element breaks all the masks on the page... how cool is that. But wait, there's more - if you apply translatez(0) on a container, the masks inside it work, but the masks outside turn to squares. And the best part - all this may vary between Android versions.
+
+Forbidden fruit
+
+You've done your job - you've tuned your application to the max and you know that it runs like native. You're confident that nothing can surprise you. And then, the horror, you receive a bug report that your app is crawling slower than the sunset on a Samsung Galaxy S III. What? How? Turns out transforms are not enough to trigger hardware acceleration there. You need a transition of the transform. And it should run at least a little - even for 1 millisecond.
+
+Working... not
+
+Beware of new activities on Android. /Demo of how 3D transforms break after an activity is closed, can be related on Microsoft's Tag reader/
+
+DeForms
+
+Almost all modern mobile browsers included support for HTML5 forms. Default Android browser however did not. Google introduced Chrome as the default browser in Nexus 7, but most of the Jelly Bean phones out there are still using the old Android browser, including the emulator and PhoneGap.
+
+You may have noticed on Android's native browser, that when you place an HTML input on a page and focus it, you can't style the focused state. This happens because it is not actually a state - Android renders another input, this time native, on top of the one in the page. This fake native element processes your typing and sends it to the page. You can easily observe that if you know that the fake input doesn't position correctly when the original element is transformed. /Demo/
+
+However, hideous as this is, there is actually workaround for Android 4.0 - you can use the little known CSS property -webkit-user-modify to remove the fake input on focus:
+
+input
+{
+    -webkit-user-modify: read-write-plaintext-only;
+}
+
+Beautiful, isn't it? Even as it is, the workaround above has some trade-offs - custom keyboards, like Swype, stop working completely, so you must carefully weigh the pros and cons of using it. In Android 2 the solution gets uglier - the only thing you can do is translate the input container to get it out of the screen and return it back with absolute positioning, thus removing the fake element. The negative effects of such workaround are even worse, ranging from broken non-english keyboards, through most HTML inputs turning to type text, to the inability to type the number 9?!?
+
+Fortunately all this mess seems to be fixed in Android 4.1, both in Chrome and in embeddable WebKit, and we'll just to wait a few years for everyone to upgrade. Yeah, right...
+
+
+
+
+WebKit hardware acceleration was introduced in Android 4. However, this actually slows down your web application - the rendering is faster, but there is a delay before it boots up - up to a second may pass until the actual rendering is done.
+
+pushState doesn't work properly in iOS 3 and 4 up to 4.2. Interesting though, it works as it should in Android 2. The good stops here - pushState is broken in Android 3+, hashes are broken in Android 4+ (the addressbar doesn't get updated every time, while the location do update internally).
+
+
+
+HTML5 form elements in iOS 4.3? do not work without a form.
+
+Force CSS refresh by using getComputedStyle.
+
+Use elementFromPoint in touchend to determine the element you are above.
+
+Input label fix for iOS (onclick="" on the label itself or on one of its containers)
+
+appMode height mishap in iOS 6.
+
