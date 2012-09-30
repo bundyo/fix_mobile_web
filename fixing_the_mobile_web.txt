@@ -7,7 +7,7 @@ They introduced smaller screens and weak processors and with their exponential g
 We grew to love them and support them.
 But its a love/hate relationship - we love them, they hate us.
 
-In 2011 there were at least 3 major smartphone operating systems on the global mobile landscape, that amount for 80% of the market. If we count Symbian, the number grows above 90%.
+Previous year, there were at least 3 major smartphone operating systems on the global mobile landscape, that amount for 80% of the market. If we count Symbian, the number grows above 90%.
 
 Worldwide smartphone market, by operating system, by 2011 global sales
 according to Canalys
@@ -22,7 +22,7 @@ Windows Phone       6.8             1.4%                -43.3%
 Others              5.4             1.1%                14.4%
 Total               487.7           100%                62.7%
 
-The good news is that all the major players are using WebKit. The bad news - implementations vary a lot.
+The good news is that all the major players are using the WebKit engine. The bad news - implementations vary a lot.
 
 Feature,Android,iOS,BlackBerry OS
 
@@ -32,9 +32,9 @@ Masks,mostly work,+,+ (except 7.0)
 3D Transforms,4+ (broken in 3),+,PBOS+
 WebGL,X,X (except ads),PBOS+
 
-As you can see from the table above, features that are supposed to work everywhere, are actually not supported on some platforms. Every operating system vendor decides what to include in their WebKit distribution, thus leading to these inconsistencies.
+As you can see from the table above, features that are supposed to work everywhere, are actually not supported on some platforms. Every operating system vendor decides what to include in their WebKit distribution, thus leading to such inconsistencies.
 
-Lesson learned: if you can, test everything you create, on every device you can get your hands on!
+Escape route: if you can, test everything you create, on every device you can get your hands on!
 
 -----------------------------
 I bet that most of you ran into strange issues while testing your sites or applications on mobile devices.
@@ -62,57 +62,65 @@ Performance degradation
 
 Imagine this scenario: you have a big list of images on a page and you add a custom scroller. To speed up the scroller, you apply a translatez(0) on the list. Instead of speeding up, the scrolling gets much worse and you can actually see parts of the page redrawing when you scroll by. The issue you've just ran into is called max texture size. All graphics chips have this texture size limit and when you reach it, your texture is split into several smaller textures which are rendered separately, resulting in more calculations and generally worse performance. This is especially visible on high resolutions as on iPad 3 as there the graphics chip has to move 4 times more pixels per texture than on previous models (even though the max texture size on iPad 3 is 4 times larger, it still covers only slightly more than the screen).
 
-Lesson learned: Mind the size of your accelerated elements.
+To avoid this, you need to use smaller elements that are sure to fit in the max texture size - in this case, apply the transform on the list items, instead of on the whole list.
 
-To avoid this, you need to use smaller textures - in this case, apply the transform on the list items or the separate images, instead of on the whole list.
+Escape route: Mind the size of your hardware accelerated elements.
 
 Fair and Square
 
-Currently most native smartphone browsers are WebKit based. A fact that may change in the future with IE10 and Firefox advancing, but now it drives the usage of some proprietary WebKit functionality - mask images. You know what they are - images with alpha transparency which apply a non-rectangular clip mask on their element. They are mostly supported in all mobile WebKit based browsers, with the exception of BlackBerry OS 7.0, in which they don't work at all. However they do work in 6.0 and 7.1.
+We already saw that most native smartphone browsers are WebKit based. This fact may change in the future with IE10 and Firefox advancing, but now it drives the usage of some proprietary WebKit functionality - for instance mask images. WebKit masks are just images with alpha transparency which apply a non-rectangular clip mask on their element. They are supported in all mobile WebKit based browsers, with the exception of BlackBerry OS 7.0, in which they don't work at all. Fortunately they do work in 6.0 and 7.1.
 
-But most issues with webkit masks you will face in Android - transforms and masks just don't get together. An example - applying -webkit-backface-visibility on a masked element in Android 4 results in a colored square. However, applying -webkit-transform: translatez(0) on a single masked element breaks all the masks on the page... how cool is that. But wait, there's more - if you apply translatez(0) on a container, the masks inside it work, but the masks outside turn to squares. And the best part - all this may vary between Android versions.
+However most issues with webkit masks you will probably face in Android - 3D transforms and masks just don't get together. An example - applying -webkit-backface-visibility on a masked element in Android 4 results in a plain colored square. On the other hand, applying -webkit-transform: translatez(0) on a single masked element breaks all the masks on the page... how cool is that. But wait, there's more - if you apply translatez(0) on a container, the masks inside it work, but the masks outside turn to squares. And the best part - all this may vary between Android versions.
 
-Forbidden fruit
+Escape route: Take extra care where you apply WebKit masks and 3D transforms.
 
-You've done your job - you've tuned your application to the max and you know that it runs like native. You're confident that nothing can surprise you. And then, the horror, you receive a bug report that your app is crawling slower than the sunset on a Samsung Galaxy S III. What? How? Turns out transforms are not enough to trigger hardware acceleration there. You need a transition of the transform. And it should run at least a little - even for 1 millisecond.
+The Forbidden fruit
 
-Working... not
+You've done your job - you've tuned your web application to the max and you know that it runs like butter. You're confident that nothing can surprise you. And then, the horror, you receive a bug report that your app is crawling slower than the sunset on a Samsung Galaxy S III. What? How? Turns out transforms are not enough to trigger hardware acceleration there. You need a transition of the transform. And it should run at least a little - even for 1 millisecond.
 
-Beware of new activities on Android. /Demo of how 3D transforms break after an activity is closed, can be related on Microsoft's Tag reader/
+Walkaround: Apply a 1ms or less transition on the transformed element, make sure you don't activate it accidentaly (use -webkit-transition-property to limit it).
+
+Working... secretly.
+
+Several times I've run on a hard to reproduce problem on Android 2.3. It happens usually when you have transforms applied in a WebView then you open a new Activity with a another WebView in it and close it. The transforms on the page afterwards are frozen - they don't update on the screen even though the page undeneath works okay and fires events.
+
+Walkaround: If you run into this issue, remove the transforms before opening the new Activity.
 
 DeForms
 
-Almost all modern mobile browsers included support for HTML5 forms. Default Android browser however did not. Google introduced Chrome as the default browser in Nexus 7, but most of the Jelly Bean phones out there are still using the old Android browser, including the emulator and PhoneGap.
+Almost all modern mobile browsers included support for HTML5 form elements like date and time pickers. For instance in iOS HTML5 form elements were introduced in iOS 4.3...?
+
+Default Android browser however didn't join the party. Google introduced Chrome as the default browser in Nexus 7, but most of the Jelly Bean phones out there are still using the old Android browser, including the emulator and PhoneGap.
+
+Escape route: use external libraries if you really need the pickers, or alternatively fall back to text and validate your input.
 
 You may have noticed on Android's native browser, that when you place an HTML input on a page and focus it, you can't style the focused state. This happens because it is not actually a state - Android renders another input, this time native, on top of the one in the page. This fake native element processes your typing and sends it to the page. You can easily observe that if you know that the fake input doesn't position correctly when the original element is transformed. /Demo/
 
-However, hideous as this is, there is actually workaround for Android 4.0 - you can use the little known CSS property -webkit-user-modify to remove the fake input on focus:
+Walkaround: Hideous as this is, you can avoid this in Android 4.0, for a price - you can use the little known CSS property -webkit-user-modify to remove the fake input on focus:
 
 input
 {
     -webkit-user-modify: read-write-plaintext-only;
 }
 
-Beautiful, isn't it? Even as it is, the workaround above has some trade-offs - custom keyboards, like Swype, stop working completely, so you must carefully weigh the pros and cons of using it. In Android 2 the solution gets uglier - the only thing you can do is translate the input container to get it out of the screen and return it back with absolute positioning, thus removing the fake element. The negative effects of such workaround are even worse, ranging from broken non-english keyboards, through most HTML inputs turning to type text, to the inability to type the number 9?!?
+The workaround above has a trade-off - custom keyboards /like Swype/ stop working completely, so you must carefully weigh the pros and cons of using it. In Android 2 the solution gets uglier - the only thing you can do is translate the input container to get it out of the screen and return it back with absolute positioning, thus removing the fake element. The negative effects of such workaround are even worse, ranging from broken non-english keyboards, through most HTML inputs turning to type text, to the inability to type the number 9?!?
 
-Fortunately all this mess seems to be fixed in Android 4.1, both in Chrome and in embeddable WebKit, and we'll just to wait a few years for everyone to upgrade. Yeah, right...
+Fortunately all this mess is fixed in Android 4.1, both in the default browser and in WebView, and we'll just to wait a few years for everyone to upgrade.
 
+History Lessens
 
+If you're building a single page web application, you will surely need a way to navigate in it. However, the History API is not consistently supported by all WebKit browsers - for instance it doesn't work properly in iOS up and including 4.3, while it should work for newer versions. Interesting though, the History API works okay in Android 2. The good stops here - it is broken in Android 3 and 4, and additionally hashes are broken in Android 4+ (the addressbar doesn't get updated every time, while the location do update internally).
 
+Escape route: Better resort to hashes for single page applications on mobile devices.
 
-WebKit hardware acceleration was introduced in Android 4. However, this actually slows down your web application - the rendering is faster, but there is a delay before it boots up - up to a second may pass until the actual rendering is done.
+Labeling
 
-pushState doesn't work properly in iOS 3 and 4 up to 4.2. Interesting though, it works as it should in Android 2. The good stops here - pushState is broken in Android 3+, hashes are broken in Android 4+ (the addressbar doesn't get updated every time, while the location do update internally).
+Input label fix for iOS (onclick="" on the label itself or on one of its containers)
 
-
-
-HTML5 form elements in iOS 4.3? do not work without a form.
 
 Force CSS refresh by using getComputedStyle.
 
 Use elementFromPoint in touchend to determine the element you are above.
-
-Input label fix for iOS (onclick="" on the label itself or on one of its containers)
 
 appMode height mishap in iOS 6.
 
