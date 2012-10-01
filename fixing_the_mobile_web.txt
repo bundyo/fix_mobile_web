@@ -4,9 +4,9 @@ tips and tricks that can save your sanity
 Smartphones changed the Web landscape.
 They introduced smaller screens and weak processors and with their exponential growth forced us, the developers, to provide special treatment for them.
 We grew to love them and support them.
-But its a love/hate relationship - we love them, they hate us.
+But its a love/hate relationship - we love them and they hate us.
 
-Previous year, there were at least 3 major smartphone operating systems on the global mobile landscape, that amount for 80% of the market. If we count Symbian, the number grows above 90%.
+Previous year, there were at least 3 major smartphone operating systems on the global mobile landscape, that roughly amount for 80% of the market. If we count Symbian, the number grows above 90%.
 
 Worldwide smartphone market, by operating system, by 2011 global sales
 according to Canalys
@@ -25,26 +25,25 @@ The good news is that all the major players are using the WebKit engine. The bad
 
 Feature,Android,iOS,BlackBerry OS
 
-HTML5 Forms,X,4.2+,+
+HTML5 Forms,X,5+,+
 SVG,3+,+,+
 Masks,mostly work,+,+ (except 7.0)
-3D Transforms,4+ (broken in 3),+,PBOS+
-WebGL,X,X (except ads),PBOS+
+3D Transforms,4+ (broken in 3),+,PBOS 2+
+WebGL,X,X (except ads),PBOS 2+
 
-As you can see from the table above, features that are supposed to work everywhere, are actually not supported on some platforms. Every operating system vendor decides what to include in their WebKit distribution, thus leading to such inconsistencies.
+As you can see from the table above, features that are supposed to work everywhere, are actually not supported on some platforms. Every operating system vendor decides what to include in their WebKit distribution, thus leading to such inconsistencies. Only BlackBerry PlayBook OS 2 supports every feature from the listed above, but its market share is below 10%.
 
 [slide]Escape route: if you can, test everything you create, on every device you can get your hands on![/slide]
 
------------------------------
-I bet that most of you ran into strange issues while testing your sites or applications on mobile devices.
+The cold hard truth is far worse:
 
-/How many of you had issues with mobile support?/
+Even on supported mobile platforms one of these features can be close to unusable. How many of you created a web application and ran into strange or even impossible issues that forced you to abandon this approach? Issues like
+* Slow performance
+* Broken rendering
+* Missing events
+* Freezes and crashes
 
-Things like:
-Slow performance
-Broken rendering
-Missing events
------------------------------
+plague the mobile web development world and pray upon our time or rather money.
 
 The most irritating ones are the performance issues. Fortunately all that is needed to speed up the rendering is a carefully placed -webkit-transform: translatez(0). You probably know that 3D transforms trigger hardware acceleration and the element rendering gets offloaded to the mobile GPU. However translatez(0) is becoming damnation as much as salvation - welcome the new zoom: 1 for the mobile web.
 
