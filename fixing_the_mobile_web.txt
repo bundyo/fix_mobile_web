@@ -84,24 +84,28 @@ Working... secretly.
 
 Several times I've run on a hard to reproduce problem on Android 2.3. It happens usually when you have transforms applied in a WebView then you open a new Activity with a another WebView in it and close it. The transforms on the page afterwards are frozen - they don't update on the screen even though the page undeneath works okay and fires events.
 
-Walkaround: If you run into this issue, remove the transforms before opening the new Activity.
+So, if you run into this issue while testing your web application, remove the transforms before opening the new Activity.
+
+[slide]Walkaround: If you run into this issue, remove the transforms before opening the new Activity.[/slide]
 
 DeForms
 
-Almost all modern mobile browsers included support for HTML5 form elements like date and time pickers. For instance in iOS HTML5 form elements were introduced in iOS 4.3...?
+Almost all modern mobile browsers included support for HTML5 form elements like date and time pickers. For instance in iOS HTML5 form elements were introduced in iOS 5.0 and BlackBerry OS 6.0, however the default Android browser didn't join the party. Google introduced Chrome as the default browser in Nexus 7, but most of the Jelly Bean phones out there are still using the old Android browser. Nexus 7 WebView is no exception.
 
-Default Android browser however didn't join the party. Google introduced Chrome as the default browser in Nexus 7, but most of the Jelly Bean phones out there are still using the old Android browser, including the emulator and PhoneGap.
+So, if you really want to use HTML5 form elements, you will need to resort to external libraries or fall back to type text with some kind of validation.
 
-Escape route: use external libraries if you really need the pickers, or alternatively fall back to text and validate your input.
+[slide]Escape route: use external libraries if you really need the pickers, or alternatively fall back to text and validate your input.[/slide]
 
 You may have noticed on Android's native browser, that when you place an HTML input on a page and focus it, you can't style the focused state. This happens because it is not actually a state - Android renders another input, this time native, on top of the one in the page. This fake native element processes your typing and sends it to the page. You can easily observe that if you know that the fake input doesn't position correctly when the original element is transformed. /Demo/
 
-Walkaround: Hideous as this is, you can avoid this in Android 4.0, for a price - you can use the little known CSS property -webkit-user-modify to remove the fake input on focus:
+Hideous as this is, you can avoid this in Android 4.0, for a price - you can use the little known CSS property -webkit-user-modify to remove the fake input on focus:
 
-input
+[slide]Walkaround: Use this CSS, with a trade-off:
+
+input[type=text], ...
 {
     -webkit-user-modify: read-write-plaintext-only;
-}
+}[/slide]
 
 The workaround above has a trade-off - custom keyboards /like Swype/ stop working completely, so you must carefully weigh the pros and cons of using it. In Android 2 the solution gets uglier - the only thing you can do is translate the input container to get it out of the screen and return it back with absolute positioning, thus removing the fake element. The negative effects of such workaround are even worse, ranging from broken non-english keyboards, through most HTML inputs turning to type text, to the inability to type the number 9?!?
 
@@ -114,6 +118,8 @@ If you're building a single page web application, you will surely need a way to 
 Escape route: Better resort to hashes for single page applications on mobile devices.
 
 Labeling
+
+iOS is no safe heaven from strange and obscure browser bugs. One example of that is the input label bug. On every other platform, if you click on a label which is associated to an input, the input gets focused. However in iOS, this is not true - nothing happens - even the click event doesn't fire.
 
 Input label fix for iOS (onclick="" on the label itself or on one of its containers)
 
