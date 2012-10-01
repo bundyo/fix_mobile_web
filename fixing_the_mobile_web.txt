@@ -1,7 +1,6 @@
 Fixing the Mobile Web
 tips and tricks that can save your sanity
 
-Slide Part 1
 Smartphones changed the Web landscape.
 They introduced smaller screens and weak processors and with their exponential growth forced us, the developers, to provide special treatment for them.
 We grew to love them and support them.
@@ -34,7 +33,7 @@ WebGL,X,X (except ads),PBOS+
 
 As you can see from the table above, features that are supposed to work everywhere, are actually not supported on some platforms. Every operating system vendor decides what to include in their WebKit distribution, thus leading to such inconsistencies.
 
-Escape route: if you can, test everything you create, on every device you can get your hands on!
+[slide]Escape route: if you can, test everything you create, on every device you can get your hands on![/slide]
 
 -----------------------------
 I bet that most of you ran into strange issues while testing your sites or applications on mobile devices.
@@ -64,7 +63,7 @@ Imagine this scenario: you have a big list of images on a page and you add a cus
 
 To avoid this, you need to use smaller elements that are sure to fit in the max texture size - in this case, apply the transform on the list items, instead of on the whole list.
 
-Escape route: Mind the size of your hardware accelerated elements.
+[slide]Escape route: Mind the size of your hardware accelerated elements.[/slide]
 
 Fair and Square
 
@@ -72,13 +71,13 @@ We already saw that most native smartphone browsers are WebKit based. This fact 
 
 However most issues with webkit masks you will probably face in Android - 3D transforms and masks just don't get together. An example - applying -webkit-backface-visibility on a masked element in Android 4 results in a plain colored square. On the other hand, applying -webkit-transform: translatez(0) on a single masked element breaks all the masks on the page... how cool is that. But wait, there's more - if you apply translatez(0) on a container, the masks inside it work, but the masks outside turn to squares. And the best part - all this may vary between Android versions.
 
-Escape route: Take extra care where you apply WebKit masks and 3D transforms.
+[slide]Escape route: Take extra care where you apply WebKit masks and 3D transforms.[/slide]
 
 The Forbidden fruit
 
 You've done your job - you've tuned your web application to the max and you know that it runs like butter. You're confident that nothing can surprise you. And then, the horror, you receive a bug report that your app is crawling slower than the sunset on a Samsung Galaxy S III. What? How? Turns out transforms are not enough to trigger hardware acceleration there. You need a transition of the transform. And it should run at least a little - even for 1 millisecond.
 
-Walkaround: Apply a 1ms or less transition on the transformed element, make sure you don't activate it accidentaly (use -webkit-transition-property to limit it).
+[slide]Walkaround: Apply a 1ms or less transition on the transformed element, make sure you don't activate it accidentaly (use -webkit-transition-property to limit it).[/slide]
 
 Working... secretly.
 
@@ -115,13 +114,14 @@ History Lessens
 
 If you're building a single page web application, you will surely need a way to navigate in it. However, the History API is not consistently supported by all WebKit browsers - for instance it doesn't work properly in iOS up and including 4.3, while it should work for newer versions. Interesting though, the History API works okay in Android 2. The good stops here - it is broken in Android 3 and 4, and additionally hashes are broken in Android 4+ (the addressbar doesn't get updated every time, while the location do update internally).
 
-Escape route: Better resort to hashes for single page applications on mobile devices.
+[slide]Escape route: Better resort to hashes for single page applications on mobile devices.[/slide]
 
 Labeling
 
-iOS is no safe heaven from strange and obscure browser bugs. One example of that is the input label bug. On every other platform, if you click on a label which is associated to an input, the input gets focused. However in iOS, this is not true - nothing happens - even the click event doesn't fire.
+iOS is no safe heaven from strange and obscure browser bugs. One example of that is the input label bug. On every other platform, if you click on a label which is associated with an input, the input gets focused. However in iOS, this is not true - nothing happens when you click on the label, unless it has an onclick event. Actually you can skip the event - an empty onclick="" attribute is all that it takes. Even better - if you have a container around all your inputs and labels, you can add the empty onclick="" attribute to it and all labels will suddenly start working.
 
-Input label fix for iOS (onclick="" on the label itself or on one of its containers)
+[slide]Walkaround: Add empty onclick attribute to the label or its container to fix the issue.[/slide]
+
 
 
 Force CSS refresh by using getComputedStyle.
