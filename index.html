@@ -241,45 +241,77 @@
     </div>
 
     <div class="step slide" data-x="3806" data-y="-600" data-rotate="1920">
-        <q>
+        <q class="no-height">
             <span class="gray-title">Monster:</span><br/>
             Transforms<br/>
             <br/>
             Android can't handle <br/>
-            to handle in one go.
+            transformation of masked elements.
         </q>
     </div>
 
     <div class="step slide" data-x="4152" data-y="0" data-rotate="2040">
-        <q>Slide 18</q>
+        <q class="no-height">
+           <span class="gray-title">Escape route:</span><br/>
+           Take extra care where you apply
+           masks and transforms, never on the same element.
+        </q>
     </div>
 
     <div class="step slide" data-x="4152" data-y="800" data-rotate="2160">
-        <q>Slide 19</q>
+        <h1>The Forbidden Fruit</h1>
     </div>
 
     <div class="step slide" data-x="4152" data-y="1600" data-rotate="2280">
-        <q>Slide 20</q>
+        <q class="no-height">
+            <span class="gray-title">Scenario:</span><br/>
+            Hardware acceleration triggers<br/>
+            seem to have stopped working.
+            <br/>
+            <span class="gray-title">Outcome:</span><br/>
+            Bad performance, flickering
+        </q>
     </div>
 
     <div class="step slide" data-x="4152" data-y="2400" data-rotate="2400">
-        <q>Slide 21</q>
+        <q class="no-height">
+           <span class="gray-title">Walkaround:</span><br/>
+           <div style="font-size: 30px; line-height: 40px;">
+               Apply a 1ms or less transition<br/>
+               on the transformed element,<br/>
+               make sure it won't activate accidentaly<br/>
+               <span class="note italic">(use <strong>-webkit-transition-property</strong> to limit it)</span>.
+           </div>
+        </q>
     </div>
 
     <div class="step slide" data-x="3806" data-y="3000" data-rotate="2520">
-        <q>Slide 22</q>
+        <h1>Shh, Working</h1>
     </div>
 
     <div class="step slide" data-x="6574" data-y="3000" data-rotate="2640">
-        <q>Slide 23</q>
+        <q class="no-height">
+            <span class="gray-title">Scenario:</span><br/>
+            Open a new Activity, containing<br/>
+            another WebKit. Close it.
+            <br/>
+            <span class="gray-title">Outcome:</span><br/>
+            All transformed elements freeze,
+            app still works down under.
+        </q>
     </div>
 
     <div class="step slide" data-x="5882" data-y="3000" data-rotate="2760">
-        <q>Slide 24</q>
+        <q class="no-height">
+           <span class="gray-title">Walkaround:</span><br/>
+           If you run into this issue,<br/>
+           <strong>remove</strong> the transforms<br/>
+           <strong>before</strong> opening the new Activity.
+         </q>
     </div>
 
     <div class="step slide" data-x="5536" data-y="2400" data-rotate="2880">
-        <q>Slide 25</q>
+        <h1>DeFormed</h1>
     </div>
 
     <div class="step slide" data-x="5536" data-y="1600" data-rotate="3000">
