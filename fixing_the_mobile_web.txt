@@ -1,6 +1,8 @@
 Fixing the Mobile Web
 tips and tricks that can save your sanity
 
+Hello, my name is Kamen Bundev and I'm a Front End Developer, working on Kendo UI Mobile at Telerik. Today, I'm going to help you enter the dark forest of mobile browser bugs and keep your head on. You will need it later, when you delve deeper alone :).
+
 Smartphones changed the Web landscape.
 They introduced smaller screens and weak processors and with their exponential growth forced us, the developers, to provide special treatment for them.
 We grew to love them and support them.
@@ -86,7 +88,7 @@ So, if you run into this issue while testing your web application, better remove
 
 [slide]Walkaround: If you run into this issue, remove the transforms before opening the new Activity.[/slide]
 
-DeForms
+DeFormed
 
 Almost all modern mobile browsers included support for HTML5 form elements like date and time pickers. For instance in iOS HTML5 form elements were introduced in iOS 5.0 and BlackBerry OS 6.0, however the default Android browser didn't join the party. Google introduced Chrome as the default browser in Nexus 7, but most of the Jelly Bean phones out there are still using the old Android browser. Nexus 7 WebView is no exception.
 
@@ -115,17 +117,28 @@ If you're building a single page web application, you will surely need a way to 
 
 [slide]Escape route: Better resort to hashes for single page applications on mobile devices.[/slide]
 
-Labeling
+Labeling Jars
 
 iOS is no safe heaven from strange and obscure browser bugs. One example of that is the input label bug. On every other platform, if you click on a label which is associated with an input, the input gets focused. However in iOS, this is not true - nothing happens when you click on the label, unless it has an onclick event. Actually you can skip the event - an empty onclick="" attribute is all that it takes. Even better - if you have a container around all your inputs and labels, you can add the empty onclick="" attribute to it and all labels will suddenly start working.
 
 [slide]Walkaround: Add empty onclick attribute to the label or its container to fix the issue.[/slide]
 
+Redraw Alone
+
+The next issue is not really an issue - it is part of how modern browsers work. When you change a CSS style on an element with Javascript, the browser doesn't hurry away to actually change it but instead wait some cycles for more such changes, then groups them and sets them in one go. And before the element actually changes, accessing element properties may return strange values. However, if you try to get the element's computed style for that property or check one of element's dimensions, like offsetWidth, the browser is forced to apply the changes immediately in order to return correct results. So, if you're using jQuery,
+
+the [slide]Walkaround: with jQuery it boils down to this:
+
+element.css("display", "block").css("display");
+
+or without:
+
+element.style.display = "block";
+element.offsetWidth;
+[/slide]
+
+Then you can safely set transition styles for instance.
 
 
-Force CSS refresh by using getComputedStyle.
 
-Use elementFromPoint in touchend to determine the element you are above.
-
-appMode height mishap in iOS 6.
-
+Closing words.
