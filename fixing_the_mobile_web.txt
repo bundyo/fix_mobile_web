@@ -80,9 +80,9 @@ You've done your job - you've tuned your web application to the max and you know
 
 [slide]Walkaround: Apply a 1ms or less transition on the transformed element, make sure you don't activate it accidentaly (use -webkit-transition-property to limit it).[/slide]
 
-Shh, Working
+Working in Secret
 
-Several times I've run on a hard to reproduce problem on Android 2.3. It happens usually when you have transforms applied in a WebView then you open a new Activity with a another WebView in it and close it. The transforms on the page afterwards are frozen - they don't update on the screen even though the page undeneath works okay and fires events.
+Several times I've run on a hard to reproduce problem on Android 2.3. It usually happens when you have transforms applied in a WebView then you open a new Activity with a another WebView in it and close it. The transforms on the page afterwards are frozen - they don't update on the screen even though the page undeneath works okay and fires events.
 
 So, if you run into this issue while testing your web application, better remove all transforms before opening the new Activity.
 
@@ -90,7 +90,7 @@ So, if you run into this issue while testing your web application, better remove
 
 DeFormed
 
-Almost all modern mobile browsers included support for HTML5 form elements like date and time pickers. For instance in iOS HTML5 form elements were introduced in iOS 5.0 and BlackBerry OS 6.0, however the default Android browser didn't join the party. Google introduced Chrome as the default browser in Nexus 7, but most of the Jelly Bean phones out there are still using the old Android browser. Nexus 7 WebView is no exception.
+Almost all modern mobile browsers included support for HTML5 form elements like date and time pickers. For instance HTML5 form elements were introduced in iOS 5.0 and BlackBerry OS 6.0, however the default Android browser didn't join the party. Google introduced Chrome as the default browser in Nexus 7, but most of the Jelly Bean phones out there are still using the old Android browser. Nexus 7 WebView is no exception.
 
 So, if you really want to use HTML5 form elements, you will need to resort to external libraries or fall back to type text with some kind of validation.
 

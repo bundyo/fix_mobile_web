@@ -266,7 +266,7 @@
     </div>
 
     <div class="step slide" data-x="4152" data-y="1600" data-rotate="2280">
-        <h1>Shh, Working</h1>
+        <h1>Working in Secret</h1>
     </div>
 
     <div class="step slide" data-x="4152" data-y="2400" data-rotate="2400">
@@ -328,16 +328,6 @@
 
     <div class="step slide" data-x="5536" data-y="800" data-rotate="3120">
         <q class="no-height">
-            <span class="gray-title">Hidden monster:</span><br/>
-            Fake native input<br/>
-            <br/>
-            Android browser's way of <br/>
-            fixing text entry problems.
-        </q>
-    </div>
-
-    <div class="step slide" data-x="5536" data-y="0" data-rotate="3240">
-        <q class="no-height">
            <span class="gray-title">Walkaround:</span><br/>
             Use this CSS, with a trade-off:<br/>
             <br/>
@@ -347,6 +337,15 @@
                 }
             </div>
          </q>
+    </div>
+
+    <div class="step slide" data-x="5536" data-y="0" data-rotate="3240">
+        <q class="no-height">
+            However, this fake native input is<br/>
+            Android browser's way of <br/>
+            fixing text entry issues.<br/>
+            If invisible, bad things start to happen.
+        </q>
     </div>
 
     <div class="step slide" data-x="5882" data-y="-600" data-rotate="3360">
@@ -368,7 +367,7 @@
         <q class="no-height">
             <span class="gray-title">Escape route:</span><br/>
             Better resort to hashes<br/>
-            for mobile single page applications history.
+            for mobile single page applications' history.
         </q>
     </div>
 
@@ -503,65 +502,73 @@
                     console.log("\n\nWebKit masks are just images with alpha transparency which apply a non-rectangular clip mask on their element. They are supported in all mobile WebKit based browsers, with the exception of BlackBerry OS 7.0, in which they don't work at all (how RIM missed that, escapes me). Fortunately they do work okay in 6.0 and 7.1.\n\nHowever most issues with webkit masks you will probably see in Android - 3D transforms and masks just don't get together there. An example - applying -webkit-backface-visibility on a masked element in Android 4 results in a plain colored square. On the other hand, applying -webkit-transform: translatez(0) on a single masked element breaks all the masks on the page... how cool is that. \n\nBut wait, there's more - if you apply translatez(0) on a container, the masks inside it work, but the masks outside turn to squares. And the best part - all this may vary between Android versions.");
                     break;
                 case 19:
-                    console.log("\n\n");
+                    console.log("\n\nSo to avoid breaking the masks in Android, take extra care where you apply WebKit masks and 3D transforms.");
                     break;
                 case 20:
-                    console.log("\n\n");
+                    console.log("\n\nYou've done your job - you've tuned your web application to the max and you know that it runs like butter. You're confident that nothing can surprise you. And then, the horror, you receive a bug report that your app is crawling slower than the sunset on a Samsung Galaxy S III. What? How?");
                     break;
                 case 21:
-                    console.log("\n\n");
+                    console.log("\n\nTurns out transforms are not enough to trigger hardware acceleration there. You need a transition of the transform. And it should run at least a little - even for 1 millisecond.");
                     break;
                 case 22:
-                    console.log("\n\n");
+                    console.log("\n\nSo, to avoid flickering and stuttering in your hardware accelerated application on Galaxy S III, apply a 1ms or shorter transition on the transformed element, make sure you don't activate it accidentaly (use -webkit-transition-property to limit it).");
                     break;
                 case 23:
-                    console.log("\n\n");
+                    console.log("\n\nSeveral times I've run on a hard to reproduce problem on Android 2.3. ");
                     break;
                 case 24:
-                    console.log("\n\n");
+                    console.log("\n\nIt usually happens when you have transforms applied in a WebView then you open a new Activity with a another WebView in it and close it. The transforms on the page afterwards are frozen - they don't update on the screen even though the page undeneath works okay and fires events.");
                     break;
                 case 25:
-                    console.log("\n\n");
+                    console.log("\n\nIf you run into this issue while testing your web application, better remove all transforms before opening the new Activity.");
                     break;
                 case 26:
-                    console.log("\n\n");
+                    console.log("\n\nAlmost all modern mobile browsers included support for HTML5 form elements like date and time pickers.");
                     break;
                 case 27:
-                    console.log("\n\n");
+                    console.log("\n\nFor instance HTML5 form elements were introduced in iOS 5.0 and BlackBerry OS 6.0, however the default Android browser didn't join the party. Google introduced Chrome as the default browser in Nexus 7, but most of the Jelly Bean phones out there are still using the old Android browser. Nexus 7 WebView is no exception.");
                     break;
                 case 28:
-                    console.log("\n\n");
+                    console.log("\n\nIf you really want to use HTML5 form elements, you will need to resort to external libraries or fall back to type text with some kind of validation.");
                     break;
                 case 29:
-                    console.log("\n\n");
+                    console.log("\n\nYou may have noticed on Android's native browser, that when you place an HTML input on a page and focus it, you can't style the focused state. This happens because it is not actually a state - Android renders another input, this time native, on top of the one in the page. This fake native element processes your typing and sends it to the page. You can easily observe that if you know that the fake input doesn't position correctly when the original element is transformed.");
                     break;
                 case 30:
-                    console.log("\n\n");
+                    console.log("\n\nHideous as this is, you can avoid this in Android 4.0, for a price - you can use the little known CSS property -webkit-user-modify to remove the fake input on focus:");
                     break;
                 case 31:
-                    console.log("\n\n");
+                    console.log("\n\nThe workaround above has a trade-off - custom keyboards /like Swype/ stop working completely, so you must carefully weigh the pros and cons of using it. In Android 2 the solution gets uglier - the only thing you can do is translate the input container to get it out of the screen and return it back with absolute positioning, thus removing the fake element. The negative effects of such workaround are even worse, ranging from broken non-english keyboards, through most HTML inputs turning to type text, to the inability to type the number 9?!?\n\nFortunately all this mess is fixed in Android 4.1, both in the default browser and in WebView, and we just have to wait a few years for everyone to upgrade.");
                     break;
                 case 32:
-                    console.log("\n\n");
+                    console.log("\n\nIf you're building a single page web application, you will surely need a way to navigate in it. However, the History API is not consistently supported by all WebKit browsers - [click]");
                     break;
                 case 33:
-                    console.log("\n\n");
+                    console.log("\n\nfor instance it doesn't work properly in iOS up and including 4.3, while it should work for newer versions. Interesting though, the History API works okay in Android 2. The good stops here - it is broken in Android 3 and 4, and additionally hashes are broken in Android 4+ (the addressbar doesn't get updated every time, while the location do update internally).");
                     break;
                 case 34:
-                    console.log("\n\n");
+                    console.log("\n\nTo avoid this mess, better avoid using the History API - use hashes instead, they are mostly harmless :)");
                     break;
                 case 35:
-                    console.log("\n\n");
+                    console.log("\n\niOS is no safe heaven from strange and obscure browser bugs. One example of that is the input label bug.");
                     break;
                 case 36:
-                    console.log("\n\n");
+                    console.log("\n\nOn every other platform, if you click on a label which is associated with an input, the input gets focused. However in iOS, this is not true - nothing happens when you click on the label... unless it has an onclick event. ");
                     break;
                 case 37:
-                    console.log("\n\n");
+                    console.log("\n\nActually you can skip the event - an empty onclick attribute is all that it takes. Even better - if you have a container around all your inputs and labels, you can add the empty onclick attribute to it and all labels will suddenly start working.");
                     break;
                 case 38:
-                    console.log("\n\n");
+                    console.log("\n\nThe next issue is not really an issue - it is part of how modern browsers work.");
                     break;
+                case 39:
+                    console.log("\n\nWhen you change a CSS style on an element with Javascript, the browser doesn't hurry away to actually change it but instead waits some cycles for more such changes, then groups them and sets them in one go. And before the element actually changes, accessing element properties may return strange values. However, if you try to get the element's computed style for that property or check one of element's dimensions, like offsetWidth, the browser is forced to apply the changes immediately in order to return correct results.");
+                    break;
+                case 40:
+                    console.log("\n\nSo, if you're using jQuery, you can call the css method one more time without arguments. Or, alternatively you can just the element's offsetWidth for instance.");
+                    break;
+                case 41:
+                    console.log("\n\n");
             }
         }, false);
     });
