@@ -1,7 +1,7 @@
 Fixing the Mobile Web
 tips and tricks that can save your sanity
 
-Hello, my name is Kamen Bundev and I'm a Front End Developer, working on Kendo UI Mobile at Telerik. Today, I'm going to help you enter the dark forest of mobile browser bugs and keep your head on. You will need it later, when you delve deeper alone :).
+Hello, my name is Kamen Bundev and I'm a Front End Developer working on Kendo UI Mobile at Telerik. Today, I'm going to help you enter the dark forest of mobile browser bugs and keep your head on. You will need it later, when you delve deeper alone :).
 
 Smartphones changed the Web landscape.
 They introduced smaller screens and weak processors and with their exponential growth forced us, the developers, to provide special treatment for them.

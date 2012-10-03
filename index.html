@@ -432,7 +432,25 @@
 </div>
 
 <script src="js/impress.js"></script>
-<script>impress().init();</script>
+<script>
+    impress().init();
+
+    var steps = document.querySelectorAll(".step"),
+        iterator = [], i, len;
+
+    for(i = 0, len = steps.length-1; i++ < len;) { iterator.push(steps[i]); }
+
+    iterator.forEach(function (value, idx) {
+        value.addEventListener("impress:stepenter", function () {
+            switch(idx) {
+                case 0:
+                    console.log("Hello, my name is Kamen Bundev and I'm a Front End Developer working on Kendo UI Mobile at Telerik. Today, I'm going to help you enter the dark forest of mobile browser bugs and keep your head on. You will need it later, when you delve deeper alone...");
+                    break;
+                case 1: break;
+            }
+        }, false);
+    });
+</script>
 
 </body>
 </html>
