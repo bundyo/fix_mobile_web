@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+    <!--<script type="text/javascript" src="js/zepto.min.js"></script>-->
+
+    <style type="text/css">
+        .box,
+        .bluebox
+        {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            width: 200px;
+            height: 200px;
+            background: red;
+            display: none;
+        }
+
+        .bluebox
+        {
+            left: 300px;
+            background: blue;
+        }
+
+        .moved
+        {
+            top: 500px;
+        }
+    </style>
+    <script type="text/javascript">
+        function setTransition() {
+            var box = $(".box");
+            box.css("display", "block");
+
+            box.css("-webkit-transition", "all 1s ease-out");
+            box.addClass("moved");
+        }
+        function forceSetTransition() {
+            var box = $(".bluebox");
+            box.css("display", "block");
+            box[0].offsetWidth;
+
+            box.css("-webkit-transition", "all 1s ease-out");
+            box.addClass("moved");
+        }
+    </script>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="bluebox"></div>
+    <button onclick="setTransition()">Fire a box</button>
+    <button onclick="forceSetTransition()">Force and fire</button>
+</body>
+</html>
