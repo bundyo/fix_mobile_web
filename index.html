@@ -439,14 +439,97 @@
         iterator = [], i, len;
 
     for(i = 0, len = steps.length-1; i++ < len;) { iterator.push(steps[i]); }
+    console.group();
 
     iterator.forEach(function (value, idx) {
         value.addEventListener("impress:stepenter", function () {
+            console.log("-----------------------");
             switch(idx) {
                 case 0:
-                    console.log("Hello, my name is Kamen Bundev and I'm a Front End Developer working on Kendo UI Mobile at Telerik. Today, I'm going to help you enter the dark forest of mobile browser bugs and keep your head on. You will need it later, when you delve deeper alone...");
+                    console.log("\n\nHello, my name is Kamen Bundev and I'm a Front End Developer working on Kendo UI Mobile at Telerik. Today, I'm going to help you enter the dark forest of mobile browser bugs and keep your head on. You will need it later, when you delve deeper alone...");
                     break;
-                case 1: break;
+                case 1:
+                    console.log("\n\nSmartphones changed the Web landscape.\n\nThey introduced smaller screens and weak processors and with their exponential growth forced us, the developers, to provide special treatment for them.");
+                    break;
+                case 2:
+                    console.log("\n\nWe grew to love them and support them all.");
+                    break;
+                case 3:
+                    console.log("\n\nBut its a love/hate relationship - ");
+                    break;
+                case 4:
+                    console.log("\n\nWE LOVE THEM");
+                    break;
+                case 5:
+                    console.log("\n\nand THEY HATE US!");
+                    break;
+                case 6:
+                    console.log("\n\nPrevious year, there were at least 3 major smartphone operating systems on the global mobile landscape, that roughly amount for 80% of the market. If we count Symbian, the number grows above 90%.");
+                    break;
+                case 7:
+                    break;
+                case 8:
+                    break;
+                case 9:
+                    break;
+                case 10:
+                    break;
+                case 11:
+                    break;
+                case 12:
+                    break;
+                case 13:
+                    break;
+                case 14:
+                    break;
+                case 15:
+                    break;
+                case 16:
+                    break;
+                case 17:
+                    break;
+                case 18:
+                    break;
+                case 19:
+                    break;
+                case 20:
+                    break;
+                case 21:
+                    break;
+                case 22:
+                    break;
+                case 23:
+                    break;
+                case 24:
+                    break;
+                case 25:
+                    break;
+                case 26:
+                    break;
+                case 27:
+                    break;
+                case 28:
+                    break;
+                case 29:
+                    break;
+                case 30:
+                    break;
+                case 31:
+                    break;
+                case 32:
+                    break;
+                case 33:
+                    break;
+                case 34:
+                    break;
+                case 35:
+                    break;
+                case 36:
+                    break;
+                case 37:
+                    break;
+                case 38:
+                    break;
             }
         }, false);
     });
