@@ -467,68 +467,100 @@
                     console.log("\n\nPrevious year, there were at least 3 major smartphone operating systems on the global mobile landscape, that roughly amount for 80% of the market. If we count Symbian, the number grows above 90%.");
                     break;
                 case 7:
+                    console.log("\n\nThe good news is that all the major players are using the WebKit engine.");
                     break;
                 case 8:
+                    console.log("\n\nThe bad news - engine and manufacturer implementations vary a lot.");
                     break;
                 case 9:
+                    console.log("\n\nAs you can see from the table above, features that are supposed to work everywhere, are actually not supported on some platforms. Every operating system vendor decides what to include in their WebKit distribution, thus leading to such inconsistencies. Only BlackBerry PlayBook OS 2 supports every feature from the ones listed above, but its market share is most likely below 5%.");
                     break;
                 case 10:
+                    console.log("\n\nSo, to be sure that everything works as you intended it to, test everything you create, on every device you can get your hands on!\n\nBut... the cold hard truth is far worse:");
                     break;
                 case 11:
+                    console.log("\n\nEven on supported mobile platforms one of these features can be close to unusable. How many of you created a web application and ran into strange or even impossible issues that forced you to abandon the original approach? Issues like\n\n* Slow performance\n\n* Broken rendering\n\n* Missing events\n\n* Freezes and crashes\n\nplague the mobile web development world and pray upon our time and our money.");
                     break;
                 case 12:
+                    console.log("\n\nThe most irritating ones are the performance issues. Without hardware acceleration custom scrolling and animations grind to a halt. Fortunately all that is needed to speed up the rendering is a carefully placed -webkit-transform: translatez(0) - \n3D transforms trigger hardware acceleration and the element rendering gets offloaded to the mobile GPU.\n\nHowever translatez(0) is becoming damnation as much as salvation - \n\n[click] welcome the new zoom: 1 for the mobile web.");
                     break;
                 case 13:
+                    console.log("\n\nAmong the many issues caused by the hardware acceleration are:\n\n* Transforming bigger elements can lead to bad performance.\n\n* Transforms can break the rendering of masks, especially on Android.\n\n* 3D transform is not enough to trigger hardware acceleration on some platforms.\n\n* Transforms may lead to artifacts.\n\n* Transforms break form elements on Android before Jelly Bean.\n\n* 3D transforms do not work in Android 2.\n\nI'll now go over these one by one:");
                     break;
                 case 14:
+                    console.log("\n\nFirst we'll start with Performance degradation");
                     break;
                 case 15:
+                    console.log("\n\nImagine this scenario: you have a rather large list of images on a page with a custom scroller. To speed up the scrolling, you apply a translatez(0) on the list. Instead of speeding up, the scrolling gets much worse and you can actually see parts of the page redrawing when you scroll by.\n\nThe issue you've just ran into is called max texture size. All graphics chips have this texture size limit and when you reach it, your texture is split into several smaller ones which are rendered separately, resulting in more calculations and generally worse performance. This is especially visible on high resolutions as on iPad 3 as there the graphics chip has to move 4 times more pixels per texture than on previous models (even though the max texture size on iPad 3 is 4 times larger, it still covers only slightly more than the screen).");
                     break;
                 case 16:
+                    console.log("\n\nTo avoid this, you need to use smaller elements that are sure to fit in the texture size - in this case, apply the transform on the list items, instead of on the whole list.");
                     break;
                 case 17:
+                    console.log("\n\nWe already saw that most native smartphone browsers are WebKit based. This fact may change in the future with IE10 and Firefox advancing, but now it drives the usage of some proprietary WebKit functionality - \n\n[click] for instance mask images.");
                     break;
                 case 18:
+                    console.log("\n\nWebKit masks are just images with alpha transparency which apply a non-rectangular clip mask on their element. They are supported in all mobile WebKit based browsers, with the exception of BlackBerry OS 7.0, in which they don't work at all (how RIM missed that, escapes me). Fortunately they do work okay in 6.0 and 7.1.\n\nHowever most issues with webkit masks you will probably see in Android - 3D transforms and masks just don't get together there. An example - applying -webkit-backface-visibility on a masked element in Android 4 results in a plain colored square. On the other hand, applying -webkit-transform: translatez(0) on a single masked element breaks all the masks on the page... how cool is that. \n\nBut wait, there's more - if you apply translatez(0) on a container, the masks inside it work, but the masks outside turn to squares. And the best part - all this may vary between Android versions.");
                     break;
                 case 19:
+                    console.log("\n\n");
                     break;
                 case 20:
+                    console.log("\n\n");
                     break;
                 case 21:
+                    console.log("\n\n");
                     break;
                 case 22:
+                    console.log("\n\n");
                     break;
                 case 23:
+                    console.log("\n\n");
                     break;
                 case 24:
+                    console.log("\n\n");
                     break;
                 case 25:
+                    console.log("\n\n");
                     break;
                 case 26:
+                    console.log("\n\n");
                     break;
                 case 27:
+                    console.log("\n\n");
                     break;
                 case 28:
+                    console.log("\n\n");
                     break;
                 case 29:
+                    console.log("\n\n");
                     break;
                 case 30:
+                    console.log("\n\n");
                     break;
                 case 31:
+                    console.log("\n\n");
                     break;
                 case 32:
+                    console.log("\n\n");
                     break;
                 case 33:
+                    console.log("\n\n");
                     break;
                 case 34:
+                    console.log("\n\n");
                     break;
                 case 35:
+                    console.log("\n\n");
                     break;
                 case 36:
+                    console.log("\n\n");
                     break;
                 case 37:
+                    console.log("\n\n");
                     break;
                 case 38:
+                    console.log("\n\n");
                     break;
             }
         }, false);
