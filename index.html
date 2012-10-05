@@ -484,10 +484,10 @@
                     console.log("\n\nAmong the many issues caused by the hardware acceleration are:\n\n* Transforming bigger elements can lead to bad performance.\n\n* Transforms can break the rendering of masks, especially on Android.\n\n* 3D transform is not enough to trigger hardware acceleration on some platforms.\n\n* Transforms may lead to artifacts.\n\n* Transforms break form elements on Android before Jelly Bean.\n\n* 3D transforms do not work in Android 2.\n\nI'll now go over these one by one:");
                     break;
                 case 14:
-                    console.log("\n\nFirst we'll start with Performance degradation");
+                    console.log("\n\nFirst we'll start with Performance degradation.\n\n[click]Imagine this scenario: you have a rather large list of images on a page with a custom scroller.");
                     break;
                 case 15:
-                    console.log("\n\nImagine this scenario: you have a rather large list of images on a page with a custom scroller. To speed up the scrolling, you apply a translatez(0) on the list. Instead of speeding up, the scrolling gets much worse and you can actually see parts of the page redrawing when you scroll by.\n\nThe issue you've just ran into is called max texture size. All graphics chips have this texture size limit and when you reach it, your texture is split into several smaller ones which are rendered separately, resulting in more calculations and generally worse performance. This is especially visible on high resolutions as on iPad 3 as there the graphics chip has to move 4 times more pixels per texture than on previous models (even though the max texture size on iPad 3 is 4 times larger, it still covers only slightly more than the screen).");
+                    console.log("\n\nTo speed up the scrolling, you apply a translatez(0) on the list. Instead of speeding up, the scrolling gets much worse and you can actually see parts of the page redrawing when you scroll by.\n\nThe issue you've just ran into is called max texture size. All graphics chips have this texture size limit and when you reach it, your texture is split into several smaller ones which are rendered separately, resulting in more calculations and generally worse performance. This is especially visible on high resolutions as on iPad 3 as there the graphics chip has to move 4 times more pixels per texture than on previous models (even though the max texture size on iPad 3 is 4 times larger, it still covers only slightly more than the screen).");
                     break;
                 case 16:
                     console.log("\n\nTo avoid this, you need to use smaller elements that are sure to fit in the texture size - in this case, apply the transform on the list items, instead of on the whole list.");
@@ -496,7 +496,7 @@
                     console.log("\n\nWe already saw that most native smartphone browsers are WebKit based. This may change in the future with IE10 and Firefox Mobile advancing, but now it drives the usage of some proprietary WebKit functionality - \n\n[click] for instance masks.");
                     break;
                 case 18:
-                    console.log("\n\nWebKit masks are just images with alpha transparency which apply a non-rectangular clip mask on their element. They are supported in all mobile WebKit based browsers, with the exception of all BlackBerry OS 7.0 versions, in which they don't work at all (how RIM missed that, escapes me). Fortunately they do work okay in 6.0 and 7.1.\n\nHowever most issues with WebKit masks you will probably see in Android - 3D transforms and masks just don't get together there. An example - applying -webkit-backface-visibility on a masked element in Android 4 results in a plain colored square. On the other hand, applying -webkit-transform: translatez(0) on a single masked element breaks all the masks on the page... how cool is that. \n\nBut wait, there's more - if you apply translatez(0) on a container, the masks inside it work, but the masks outside turn to squares. And the best part - all this may vary between Android versions.");
+                    console.log("\n\nWebKit masks are just images with alpha transparency which apply a non-rectangular clip mask on their element. They are supported in all mobile WebKit based browsers, with the exception of all BlackBerry OS 7.0 versions, in which they don't work at all (how RIM missed that, escapes me). Fortunately they do work okay in 6.0 and 7.1.\n\nHowever most issues with WebKit masks you will probably see in Android - 3D transforms and masks just don't get together there. An example - applying -webkit-backface-visibility on a masked element in Android 4 results in a colored rectangle. On the other hand, applying -webkit-transform: translatez(0) on a single masked element breaks all the masks on the page...  \n\nBut wait, there's more - if you apply translatez(0) on a container, the masks inside it will work, but the rest of the masks on the page turn to rectangles. And the best part - all this may vary between Android versions.");
                     break;
                 case 19:
                     console.log("\n\nSo to avoid breaking the masks in Android, take extra care where you apply WebKit masks and 3D transforms.");
@@ -511,10 +511,10 @@
                     console.log("\n\nSo, to avoid flickering and stuttering in your hardware accelerated application on Galaxy S III, apply a 1ms or shorter transition on the transformed element, make sure you don't activate it accidentaly (use -webkit-transition-property to limit it).");
                     break;
                 case 23:
-                    console.log("\n\nSeveral times I've run on a hard to reproduce problem on Android 2.3. ");
+                    console.log("\n\nSeveral times I've run into a hard to reproduce problem on Android 2.3. ");
                     break;
                 case 24:
-                    console.log("\n\nIt usually happens when you have transforms applied in a WebView then you open a new Activity with a another WebView in it and close it. The transforms on the page afterwards are frozen - they don't update on the screen even though the page undeneath works okay and fires events.");
+                    console.log("\n\nIt usually happens when you have transforms applied in a WebView then you open a new Activity with a another WebView in it and later close it. The transforms on the page afterwards are frozen - they doesn't get updated on the screen even though the page undeneath works okay and fires events.");
                     break;
                 case 25:
                     console.log("\n\nIf you run into this issue while testing your web application, better remove all transforms before opening the new Activity.");
@@ -523,19 +523,19 @@
                     console.log("\n\nAlmost all modern mobile browsers included support for HTML5 form elements like date and time pickers.");
                     break;
                 case 27:
-                    console.log("\n\nFor instance HTML5 form elements were introduced in iOS 5.0 and BlackBerry OS 6.0, however the default Android browser didn't join the party. Google introduced Chrome as the default browser in Nexus 7, but most of the Jelly Bean phones out there are still using the old Android browser. Nexus 7 WebView is no exception.");
+                    console.log("\n\nFor instance HTML5 form elements were introduced in iOS 5.0 and BlackBerry OS 6.0, however the default Android browser didn't join the party. Google introduced Chrome as the default browser in Nexus 7, but most of the Jelly Bean phones out there are still using the old Android browser which still doesn't have support for HTML5 form elements. Even the Nexus 7 WebView used in PhoneGap is no exception. This leads to a rather unfortunate conclusion:");
                     break;
                 case 28:
-                    console.log("\n\nIf you really want to use HTML5 form elements, you will need to resort to external libraries or fall back to type text with some kind of validation.");
+                    console.log("\n\nIf you really want to use HTML5 form elements, you will have to fall back to external libraries for the pickers or use inputs of type text with some kind of validation.");
                     break;
                 case 29:
                     console.log("\n\nYou may have noticed on Android's native browser, that when you place an HTML input on a page and focus it, you can't style the focused state. This happens because it is not actually a state - Android renders another input, this time native, on top of the one in the page. This fake native element processes your typing and sends it to the page. You can easily observe that if you know that the fake input doesn't position correctly when the original element is transformed.");
                     break;
                 case 30:
-                    console.log("\n\nHideous as this is, you can avoid this in Android 4.0, for a price - you can use the little known CSS property -webkit-user-modify to remove the fake input on focus:");
+                    console.log("\n\nHideous as this is, you can avoid this in Android 4.0, for a price - you can use the little known CSS property -webkit-user-modify to remove the fake input on focus. However, this workaround has a trade-off - custom keyboards /like Swype for instance/ stop working completely, so you must carefully weigh the pros and cons of using it.");
                     break;
                 case 31:
-                    console.log("\n\nThe workaround above has a trade-off - custom keyboards /like Swype/ stop working completely, so you must carefully weigh the pros and cons of using it. In Android 2 the solution gets uglier - the CSS property is not supported, so the only thing you can do to avoid the second input is translation the input container to get it out of the screen and return it back with absolute positioning, thus removing the fake element. The negative effects of such workaround are even worse, ranging from broken non-english keyboards, through most HTML inputs turning to type text, to the inability to type the number 9?!?\n\nFortunately all this mess is fixed in Jelly Bean, both in the default browser and in WebView, and we just have to wait a few years for everyone to upgrade.");
+                    console.log("\n\n In Android 2 the solution gets uglier - the CSS property is not supported, so the only thing you can do to avoid the second input is translation the input container to get it out of the screen and return it back with absolute positioning, thus removing the fake element. The negative effects of such workaround are even worse, ranging from broken non-english keyboards, through most HTML inputs turning to type text, to the inability to type the number 9?!?\n\nFortunately all this mess is fixed in Jelly Bean, both in the default browser and in WebView, and we just have to wait a few years for everyone to upgrade.");
                     break;
                 case 32:
                     console.log("\n\nIf you're building a single page web application, you will surely need a way to navigate in it. Unfortunately, the History API is not consistently supported by all WebKit browsers - [click]");
