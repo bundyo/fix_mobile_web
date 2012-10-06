@@ -177,12 +177,12 @@
             -webkit-transform: translatez(0)<br/>
             is the new zoom: 1;
             <ul class="list">
-                <li>Not working at all in Android 2</li>
                 <li>Sometimes can lead to worse performance</li>
                 <li>Can break the rendering of masks</li>
                 <li>May be not enough for hardware acceleration</li>
                 <li>May lead to artifacts</li>
                 <li>Breaks form elements on Android</li>
+                <li>Not working at all in Android 2</li>
             </ul>
         </div>
     </div>
@@ -424,6 +424,10 @@
 
     <div class="step slide" data-x="7612" data-y="3600" data-rotate="4440">
         <h1>The End</h1>
+        <div class="bottom center note" style="bottom: 100px;">
+            <a href="http://bundyo.github.com/fix_mobile_web/">http://bundyo.github.com/fix_mobile_web/</a><br/><br/>
+            <a href="http://www.kendoui.com/">http://www.kendoui.com</a><br/><br/>
+        </div>
     </div>
 </div>
 
@@ -448,7 +452,7 @@
                     console.log("\n\nSmartphones changed the Web landscape.\n\nThey introduced smaller screens and weak processors and with their exponential growth forced us, the developers, to provide special treatment for them.");
                     break;
                 case 2:
-                    console.log("\n\nWe grew to love them and support them all.");
+                    console.log("\n\nWe grew to love them and support them.");
                     break;
                 case 3:
                     console.log("\n\nBut its a love/hate relationship - ");
@@ -463,31 +467,31 @@
                     console.log("\n\nLast year, there were at least 3 major smartphone operating systems on the global mobile landscape, that roughly amount for 80% of the market. If we count Symbian, the number grows above 90%.");
                     break;
                 case 7:
-                    console.log("\n\nThe good news is that all the major players are using the WebKit engine.");
+                    console.log("\n\nThe good news is that all the major players are using the WebKit engine.\n\n[click] And The bad news - ");
                     break;
                 case 8:
-                    console.log("\n\nThe bad news - engine and manufacturer implementations vary a lot.");
+                    console.log("\n\nthe engine and manufacturer implementations vary a lot.");
                     break;
                 case 9:
                     console.log("\n\nAs you can see from the table above, features that are supposed to work everywhere, are actually not supported on some platforms. Every operating system vendor decides what to include in their WebKit distribution, thus leading to such inconsistencies. Only BlackBerry PlayBook OS 2 supports every feature from the ones listed above, but its market share is most likely below 5%.");
                     break;
                 case 10:
-                    console.log("\n\nSo, to be sure that everything works as you intended it to, test everything you create, on every device you can get your hands on!\n\nBut... the cold hard truth is far worse:");
+                    console.log("\n\nSo, to be sure that everything works as you intended it to, test everything you create, on every device you can get your hands on!\n\nBut... the cold hard truth is far worse:\n\n[click] Even on supported mobile platforms...");
                     break;
                 case 11:
-                    console.log("\n\nEven on supported mobile platforms one of these features can be close to unusable. How many of you created a web application and ran into strange or even impossible issues that forced you to abandon the original approach? Issues like\n\n* Slow performance\n\n* Broken rendering\n\n* Missing events\n\n* Freezes and crashes\n\nplague the mobile web development world and pray upon our time and our money.");
+                    console.log("\n\none of these features can be close to unusable. How many of you created a web application and ran into strange or even impossible issues that forced you to abandon the original approach? Issues like\n\n* Slow performance\n\n* Broken rendering\n\n* Missing events\n\n* Freezes and crashes\n\nplague the mobile web development world and pray upon [click] our time and our money.");
                     break;
                 case 12:
-                    console.log("\n\nThe most irritating ones are the performance issues. Without hardware acceleration custom scrolling and animations grind to a halt. Fortunately all that is needed to speed up the rendering is a carefully placed -webkit-transform: translatez(0) - \n3D transforms trigger hardware acceleration and the element rendering gets offloaded to the mobile GPU.\n\nHowever translatez(0) is becoming damnation as much as salvation - \n\n[click] welcome the new zoom: 1 for the mobile web.");
+                    console.log("\n\nThe most irritating ones are the performance issues. Without hardware acceleration custom scrolling and animations grind to a halt. Fortunately all that is needed to speed up the rendering is a 3D transform - a carefully placed -webkit-transform: translatez(0) - \n\nsuch transform triggers hardware acceleration on this element and its rendering gets offloaded to the mobile GPU.\n\nHowever translatez(0) is becoming damnation as much as salvation - \n\n[click] welcome the new zoom: 1 for the mobile web.");
                     break;
                 case 13:
-                    console.log("\n\nAmong the many issues caused by the hardware acceleration are:\n\n* Transforming bigger elements can lead to bad performance.\n\n* Transforms can break the rendering of masks, especially on Android.\n\n* 3D transform is not enough to trigger hardware acceleration on some platforms.\n\n* Transforms may lead to artifacts.\n\n* Transforms break form elements on Android before Jelly Bean.\n\n* 3D transforms do not work in Android 2.\n\nI'll now go over these one by one:");
+                    console.log("\n\nAmong the many issues caused by the hardware acceleration are these:\n\n- Transforming bigger elements can lead to bad performance and can break the rendering of masks, especially on Android.\n\n- Sometimes a 3D transform is not enough to trigger hardware acceleration on some platforms.\n\n- Transforms also may lead to artifacts and can break form elements on Android versions before Jelly Bean.\n\nAnd finally 3D transforms do not work in Android 2.\n\nI'll now go over these one by one:");
                     break;
                 case 14:
-                    console.log("\n\nFirst we'll start with Performance degradation.\n\n[click]Imagine this scenario: you have a rather large list of images on a page with a custom scroller.");
+                    console.log("\n\nFirst we'll start with Performance degradation.\n\nImagine this scenario: you have a rather large list of images on a page [click] with a custom scroller.");
                     break;
                 case 15:
-                    console.log("\n\nTo speed up the scrolling, you apply a translatez(0) on the list. Instead of speeding up, the scrolling gets much worse and you can actually see parts of the page redrawing when you scroll by.\n\nThe issue you've just ran into is called max texture size. All graphics chips have this texture size limit and when you reach it, your texture is split into several smaller ones which are rendered separately, resulting in more calculations and generally worse performance. This is especially visible on high resolutions as on iPad 3 as there the graphics chip has to move 4 times more pixels per texture than on previous models (even though the max texture size on iPad 3 is 4 times larger, it still covers only slightly more than the screen).");
+                    console.log("\n\nTo speed up the scrolling, you apply a translatez(0) on the list. Instead of speeding up, the scrolling gets much worse and you can actually see parts of the page redrawing when you scroll by.\n\nThe issue you've just ran into is called max texture size. All graphics chips have this texture size limit and when you reach it, your texture is split into several smaller ones which are rendered separately, resulting in more calculations and generally worse performance. This is especially visible on high resolutions as on iPad 3 as there the graphics chip has to move 4 times more pixels per texture than on previous models (even though the max texture size on iPad 3 is 4 times bigger, it still covers only slightly more than the screen).");
                     break;
                 case 16:
                     console.log("\n\nTo avoid this, you need to use smaller elements that are sure to fit in the texture size - in this case, apply the transform on the list items, instead of on the whole list.");
@@ -499,16 +503,16 @@
                     console.log("\n\nWebKit masks are just images with alpha transparency which apply a non-rectangular clip mask on their element. They are supported in all mobile WebKit based browsers, with the exception of all BlackBerry OS 7.0 versions, in which they don't work at all (how RIM missed that, escapes me). Fortunately they do work okay in 6.0 and 7.1.\n\nHowever most issues with WebKit masks you will probably see in Android - 3D transforms and masks just don't get together there. An example - applying -webkit-backface-visibility on a masked element in Android 4 results in a colored rectangle. On the other hand, applying -webkit-transform: translatez(0) on a single masked element breaks all the masks on the page...  \n\nBut wait, there's more - if you apply translatez(0) on a container, the masks inside it will work, but the rest of the masks on the page turn to rectangles. And the best part - all this may vary between Android versions.");
                     break;
                 case 19:
-                    console.log("\n\nSo to avoid breaking the masks in Android, take extra care where you apply WebKit masks and 3D transforms.");
+                    console.log("\n\nSo to avoid breaking WebKit masks in Android, take extra care where you apply them and preferably don't mix them with transforms.");
                     break;
                 case 20:
-                    console.log("\n\nYou've done your job - you've tuned your web application to the max and you know that it runs like butter. You're confident that nothing can surprise you. And then, the horror, you receive a bug report that your app is crawling slower than the sunset on a Samsung Galaxy S III. What? How?");
+                    console.log("\n\nWith the advancement of HTML mobile applications, and the usage of hardware acceleration for better responsiveness, the graphics chip is eating smartphone batteries somewhat faster. In an attempt to avoid that, manufacturers and operating system vendors are limiting the CSS properties that trigger hardware acceleration. You probably heard that for iOS 6, but Samsung did something similar in Galaxy S III, though limiting [click] more properties.");
                     break;
                 case 21:
-                    console.log("\n\nTurns out transforms are not enough to trigger hardware acceleration there. You need a transition of the transform. And it should run at least a little - even for 1 millisecond.");
+                    console.log("\n\nTurned out 3D transforms are not enough to trigger hardware acceleration there. After some testing, we were able to do so with a transition of the transformed element. And it should run at least a little - even for 1 millisecond.");
                     break;
                 case 22:
-                    console.log("\n\nSo, to avoid flickering and stuttering in your hardware accelerated application on Galaxy S III, apply a 1ms or shorter transition on the transformed element, make sure you don't activate it accidentaly (use -webkit-transition-property to limit it).");
+                    console.log("\n\nSo, to be able to turn on hardware acceleration in your web application on a Samsung Galaxy S III, apply a 1ms or shorter transition on the transformed element, but make sure you don't activate it accidentaly (use -webkit-transition-property to limit it).");
                     break;
                 case 23:
                     console.log("\n\nSeveral times I've run into a hard to reproduce problem on Android 2.3. ");
@@ -559,13 +563,13 @@
                     console.log("\n\nThe next issue is not really an issue - it is part of how modern browsers work.");
                     break;
                 case 39:
-                    console.log("\n\nWhen you change a CSS style on an element with Javascript, the browser doesn't hurry away to actually change it but instead waits some cycles for more such changes, then groups them and sets them in one go. And before the element actually changes, accessing element properties may return strange values. However, if you try to get the element's computed style for that property or check one of element's dimensions, like offsetWidth, the browser is forced to apply the changes immediately in order to return correct results.");
+                    console.log("\n\nWhen you change a CSS style on an element with Javascript, the browser doesn't hurry away to actually change it but instead waits some cycles for more such changes, then groups them and sets them in one go. However you sometimes need to force the browser to apply the changes before doing something else.\n\nFor instance, if you show an element, set a transition and some styles after it, they all will be set at the same time and the transition won't run. [click]");
                     break;
                 case 40:
-                    console.log("\n\nSo, if you're using jQuery, you can call the css method one more time without arguments. Or, alternatively you can just check the element's offsetWidth or other such property. You can now safely trigger the transition and it will run.");
+                    console.log("\n\nTo avoid that, you can request the element's computed style for the property you are setting or you can check one of element's dimensions, like offsetWidth, and the browser will be forced to apply the changes immediately in order to return correct results. You can now safely trigger the transition and it will run.");
                     break;
                 case 41:
-                    console.log("\n\nThat was it. We managed to escape the dark forest labyrinth of mobile browser bugs, barely stumbling into a dozen of them. But the forest is deep and hungry and inviting and we know that we will have to venture alone into it at some point.\n\nMake sure you're prepared for everything and armed with sharp weapons,\n\nlike patience and creativity\n\nor you can bring a friend for a guide - like Kendo UI Mobile.\n\nJust know that every problem has a solution - you just haven't found it yet... [click] Thank you.");
+                    console.log("\n\nThat was it. We are back in the open and managed to escape the dark forest labyrinth of mobile browser bugs, barely stumbling into a dozen of them. But the forest is deep and hungry and inviting and we know that we will have to venture alone into it at some point.\n\nMake sure you're prepared for everything and armed with sharp weapons,\n\nlike patience and creativity\n\nor you can bring a friend for a guide - like Kendo UI Mobile.\n\nEither way, know that every problem has a solution - you just haven't found it yet... [click] Thank you.");
             }
         }, false);
     });
