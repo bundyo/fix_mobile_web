@@ -494,7 +494,7 @@
                     console.log("\n\nвсеки един от изброените фийчъри може да бъде почти неизползваем. Колко от вас са създавали уеб апликация и са се сблъсквали със странни и дори невъзможни проблеми, които са ви принудили да се откажете от оригиналният дизайн и да започнете наново? Проблеми като\n\n* ниска производителност\n\n* счупен рендеринг\n\n* липсващи евенти\n\n* и много други\n\nса нападнали светът на мобилният уеб девелъпмънт и се хранят с [click] нашето време и пари.");
                     break;
                 case 12:
-                    console.log("\n\nЕдин от най-големите проблеми е производителността. Без хардуерно ускорение почти е невъзможно да се направи плавно скролиране и анимации. За късмет? всико което е необходимо за да се ускори рендеринга е една -webkit-transform: translatez(0) 3D трансформация.\n\n Такава транформация включва хардуерното ускорение за елемента на който е поставена и задачата по изчертаването му се препраща на графичният ускорител на мобилното устройство. \n\nЗа съжаление translatez(0) все повече се превръща в проклятие колкото и решение - \n\n[click] посрещенете новият zoom: 1 на мобилният уеб.");
+                    console.log("\n\nЕдин от най-големите проблеми е производителността. Без хардуерно ускорение почти е невъзможно да се направи плавно скролиране и анимации. За щастие всико което е необходимо за да се ускори рендеринга е една -webkit-transform: translatez(0) 3D трансформация.\n\n Такава транформация включва хардуерното ускорение за елемента на който е поставена и задачата по изчертаването му се препраща на графичният ускорител на мобилното устройство. \n\nЗа съжаление translatez(0) все повече се превръща в проклятие колкото и решение - \n\n[click] посрещенете новият zoom: 1 на мобилният уеб.");
                     break;
                 case 13:
                     console.log("\n\nСред многото проблеми причинени от хардуерното ускорение са следните:\n\n- Трансформиране на големи елементи може да доведе до по-лоша производителност и може да счупи изчертаването на WebKit маски, по-специално под Андроид.\n\n- Понякога 3D трансфомация не е достатъчна за да се пусне хардуерното ускорение в някои платформи.\n\n- Трансформациите могат да счупят показването на форм елементи във версии на Андроид преди Jelly Bean.\n\nИ най-накрая - 3D трансфомациите съвсем не работят в Андроид 2.\n\nСега ще се спра на всеки един от тези проблеми:");
@@ -515,73 +515,73 @@
                     console.log("\n\nWebKit маските са просто картинки с алфа прозрачност, чрез които се прилага клип маска с неправилна форма върху елемента. WebKit маските се поддържат във всички WebKit базирани браузъри, с изключение на този в BlackBerry OS 7.0 - там не работят въобще. Странно, като се има предвид, че работят нормално в 6.0 и 7.1.\n\nНезависимо от това - най-много проблеми с маските ще имате в Андроид - 3D трансформации и маски хич не се спогаждат... Един пример - прилагането на -webkit-backface-visibility върху маскиран елемент в Андроид 4 води до показването на цветен правоъгълник. От друга страна - прилагането на -webkit-transform: translatez(0) върху единичен маскиран елемент води до счупването на всички маски върху страницата...  \n\nЧудесно... но има и още - ако приложите translatez(0) върху контейнер - маските вътре в него ще работят, но пък всички останали маски на страницата ще се превърнат в правоъгълници. И най-доброто - всичко това варира между различните версии на Андроид.");
                     break;
                 case 19:
-                    console.log("\n\nТака че - за да избегнете цветните правоъгълници в Андроид - внимателно преценявайте къде да ползвате маски и за предпочитане не ги смесвяайте с трансформации...");
+                    console.log("\n\nТака че - за да избегнете цветните правоъгълници в Андроид - внимателно преценявайте къде да ползвате маски и за предпочитане не ги смесвайте с трансформации...");
                     break;
                 case 20:
-                    console.log("\n\nWith the advancement of HTML mobile applications, and the usage of hardware acceleration for better responsiveness, the graphics chip is eating smartphone batteries somewhat faster. In an attempt to avoid that, manufacturers and operating system vendors are limiting the CSS properties that trigger hardware acceleration. You probably heard that for iOS 6, but Samsung did something similar in Galaxy S III, though limiting [click] more properties.");
+                    console.log("\n\nС напредъка на мобилните HTML апликации и използването на хардуерно ускорение за по-добра производителност, графичните ускорители в смартфоните хапват батерии доста по-бързо. Може би за да се опитат да предотвратят това, някои производители ограничават CSS пропъртитата които могат да стартират хардуерното ускорение. Предполагам сте чули това за iOS 6, но Самсунг нправиха нещо подобно в Galaxy S III, само че ограничавайки [click] повече пропъртита.");
                     break;
                 case 21:
-                    console.log("\n\nTurned out 3D transforms are not enough to trigger hardware acceleration there. After some testing, we were able to do so with a transition of the transformed element. And it should run at least a little - even for 1 millisecond.");
+                    console.log("\n\nОказа се че 3D трансфомации не са вече достатъчни за да стартират хардуерното ускорение. След известно тестване успяхме да го направим, но с кратък transition на транформираният елемент - дори и 1 милисекунда е достатъчна.");
                     break;
                 case 22:
-                    console.log("\n\nSo, to be able to turn on hardware acceleration in your web application on a Samsung Galaxy S III, apply a 1ms or shorter transition on the transformed element, but make sure you don't activate it accidentaly (use -webkit-transition-property to limit it).");
+                    console.log("\n\nВ крайна сметка, за да успеете да пуснете хардуерното ускорение в Samsung Galaxy S III, приложете 1ms или по-кратък transition върху трансформираният елемент, но се уверете че няма да се активира случайно върху друго пропърти (използвайте -webkit-transition-property за да го ограничите).");
                     break;
                 case 23:
-                    console.log("\n\nSeveral times I've run into a hard to reproduce problem on Android 2.3. ");
+                    console.log("\n\nНа няколко пъти се сблъсквам с труден за възпроизвеждане проблем в Андроид 2.3");
                     break;
                 case 24:
-                    console.log("\n\nIt usually happens when you have transforms applied in a WebView then you open a new Activity with a another WebView in it and later close it. The transforms on the page afterwards are frozen - they doesn't get updated on the screen even though the page undeneath works okay and fires events.");
+                    console.log("\n\nОбикновено се случва когато използвате трансформации във WebView и в последствие отворите ново Activity с друго WebView в него и след това ги заторите. Транформациите на страницата ви след това са замръзнали - те не се обновяват върху екрана, въпреки че страницата отдолу работи нормално и стартира евенти.");
                     break;
                 case 25:
-                    console.log("\n\nIf you run into this issue while testing your web application, better remove all transforms before opening the new Activity.");
+                    console.log("\n\nАко се натъкнете на този проблем докато тествате апликацията си - можете да го заобиколите, като премахнете всички транформации преди да отворите новото Activity и ги върнете обратно след като го затворите.");
                     break;
                 case 26:
-                    console.log("\n\nAlmost all modern mobile browsers included support for HTML5 form elements like date and time pickers.");
+                    console.log("\n\nПочти всички модерни мобилни браузъри добавиха поддръжка на HTML5 форм елементи като например пикъри за дати и време.");
                     break;
                 case 27:
-                    console.log("\n\nFor instance HTML5 form elements were introduced in iOS 5.0 and BlackBerry OS 6.0, however the default Android browser didn't join the party. Google introduced Chrome as the default browser in Nexus 7, but most of the Jelly Bean phones out there are still using the old Android browser which still doesn't have support for HTML5 form elements. Even the Nexus 7 WebView used in PhoneGap is no exception. This leads to a rather unfortunate conclusion:");
+                    console.log("\n\niOS 5.0 и BlackBerry OS 6.0 бяха първите версии на тези операционни системи, които добавиха HTML5 форм елементи. За съжаление вграденият в Андроид не добави подобна поддръжка. Въпреки че Google направиха Chrome for Android браузър по подразбиране в Nexus 7, повечето Jelly Bean смартфони все още използват старият Андроид браузър, който все още няма поддръжка на HTML5 form elements. WebView-то на Apache Cordova използвано от PhoneGap и Icenium също е базирано на този браузър и не е изключение. Това ни води до едно неприятно заключение:");
                     break;
                 case 28:
-                    console.log("\n\nIf you really want to use HTML5 form elements, you will have to fall back to external libraries for the pickers or use inputs of type text with some kind of validation.");
+                    console.log("\n\nАко наистина искате да използвате HTML5 форм елементи, ще се наложи да прибегнете до външни библиотеки за пикърите в Андроид или да използвате нормални инпут елементи с някакъв вид валидация.");
                     break;
                 case 29:
-                    console.log("\n\nYou may have noticed on Android's native browser, that when you place an HTML input on a page and focus it, you can't style the focused state. This happens because it is not actually a state - Android renders another input, this time native, on top of the one in the page. This fake native element processes your typing and sends it to the page. You can easily observe that if you know that the fake input doesn't position correctly when the original element is transformed.");
+                    console.log("\n\nМоже би сте забелязали в стандартният Андроид браузър, че когато имате HTML инпут в страницата и го фокусирате, фокусираното състояние не може да се стилизира. Това е така, защото всъщност това което виждате не е точно състояние - когато фокусирате инпут, Android показва върху него друг, този път нативен инпут. Този втори нативен елемент приема това, което въвеждате и го изпраща към страницата. Можете лесно да забележите това, ако знаете, че този фалшив инпут не се позиционира правилно ако трансформирате оригиналният елемент - ако изместите оригиналният елемент, ще получите два инпут елемента върху страницата си - единият стилизиран правилно, а другият бял. Като бонус ще имате два курсора и всичко, което въвеждате ще се появява и на двете места.");
                     break;
                 case 30:
-                    console.log("\n\nHideous as this is, you can avoid this in Android 4.0, for a price - you can use the little known CSS property -webkit-user-modify to remove the fake input on focus. However, this workaround has a trade-off - custom keyboards /like Swype for instance/ stop working completely, so you must carefully weigh the pros and cons of using it.");
+                    console.log("\n\nДобрите новини са, че този проблем може да бъде заобиколен в Андроид 4 - можете да използвате малко известното CSS пропърти -webkit-user-modify за да премахнете фалшивият инпут при фокус. Лошите новини обаче са, че това си има цена - специализирани клавиатури като например Суайп няма да работят въобще в един такъв елемент. Затова трябва внимателно да прецените плюсовете и минусите от използването на този трик.");
                     break;
                 case 31:
-                    console.log("\n\n In Android 2 the solution gets uglier - the CSS property is not supported, so the only thing you can do to avoid the second input is translation of the input container to get it out of the screen and return it back with absolute positioning, thus removing the fake element. Don't translate the input itself, or there will be dragons! The negative effects of such workaround are even worse, ranging from broken non-english keyboards, through most HTML inputs turning to type text, to the inability to type the number 9?!?\n\nFortunately all this mess is fixed in Jelly Bean, both in the default browser and in WebView, and we just have to wait a few years for everyone to upgrade.");
+                    console.log("\n\nВ Андроид 2 нещата загрубяват - CSS пропъртито което споменахме не се поддържа и единственото нещо което можете да направите за да избегнете вторият инпут е да транслирате контейнера с трансформация докато излезе от екрана и после да го върнете обратно с абсолютно позициониране - фалшивият елемент ще остане извън екрана. Негативните ефекти на този трик обаче са доста повече, като например: всички не-английски клавиатури спират да работят, повечето транслирани инпути се превръщат в тип текст, както и да невъзможността да се напише цифрата 9?!?\n\nПоследният проблем се оказа всъщност причинен от PhoneGap и ще бъде поправен във версия 2.3\n\nЗа наша радост, цялата тази бъркотия е поправена в Jelly Bean, както в браузъра по подразбиране, така и във WebView, и само ни остава да изчакаме няколко години докато всички смартфони се обновят.");
                     break;
                 case 32:
-                    console.log("\n\nIf you're building a single page web application, you will surely need a way to navigate in it. Unfortunately, the History API is not consistently supported by all WebKit browsers - [click]");
+                    console.log("\n\nАко създавате single page апликация, ще имате нужда да навигирате из нея. За съжаление History API-то не се поддържа еднакво добре от всички WebKit браузъри - [click]");
                     break;
                 case 33:
-                    console.log("\n\nfor instance it doesn't work properly in iOS up and including 4.3, while it should work for newer versions. Interesting though, the History API works okay in Android 2. The good stops here - it is broken in Android 3 and 4, and additionally hashes are also partially broken in Android 4+ (the addressbar doesn't get updated every time, while the location do update internally).");
+                    console.log("\n\nто например не работи добре в iOS чак до и включително версия 4.3, но пък работи нормално във всички по-нови версии. Може и да е малко странно, но History API-то работи нормално и в Андроид 2. Хубавото обаче свършва до тук - то не работи в Андроид версии 3 и 4, и като бонус хеш адресите са също счупени в Андроид 4 и нагоре (адрес бара не се обновява при всяка хеш навигация и не се знае къде ще ви прати ако натиснете рефреш).");
                     break;
                 case 34:
-                    console.log("\n\nTo avoid this mess, better don't use the History API for mobile apps, until it matures - use hashes instead, they are mostly harmless :)");
+                    console.log("\n\nЗа да избегнете тази бъркотия, по-добре не използвайте History API за мобилни апликации, докато не започне да се поддържа по-добре - използвайте хешове - те са почти безобидни. :)");
                     break;
                 case 35:
-                    console.log("\n\niOS is no safe heaven from strange and obscure browser bugs. One example of that is the input label bug.");
+                    console.log("\n\niOS не е безопасно убежище от странни и зловещи бъгове. Добър пример би бил бъгът с label елементите.");
                     break;
                 case 36:
-                    console.log("\n\nOn every other platform, if you click on a label which is associated with an input, the input gets focused. However in iOS, this is not true - nothing happens when you click on the label... unless it has an onclick event. ");
+                    console.log("\n\nНа всяка друга платформа, когато кликнете върху label който е асоцииран с инпут, този инпут бива фокусиран сменя състоянието си (получава клик). Но в iOS това не се случва - нищо не става когато кликнете на някой label... освен ако няма асоцииран onclick евент.");
                     break;
                 case 37:
-                    console.log("\n\nActually you can skip the event - an empty onclick attribute is all that it takes. Even better - if you have a container around all your inputs and labels, you can add the empty onclick attribute to it and all labels will suddenly start working.");
+                    console.log("\n\nВсъщност можете дори да пропуснете евента - празен onclick атрибут е абсолютно достатъчен. И още по-добре, ако имате контейнер около всичките си инпути и label-и, можете да добавите празният onclick атрибут на него и всички label-и внезапно ще започнат да работят.");
                     break;
                 case 38:
-                    console.log("\n\nThe next issue is not really an issue - it is part of how modern browsers work.");
+                    console.log("\n\nСледващият проблем всъщност не е точно проблем - той е част от начина по който работят модерните браузъри.");
                     break;
                 case 39:
-                    console.log("\n\nWhen you change a CSS style on an element with Javascript, the browser doesn't hurry away to actually change it but instead waits some cycles for more such changes, then groups them and sets them in one go. However you sometimes need to force the browser to apply the changes before doing something else.\n\nFor instance, if you show an element, set a transition and some styles after it, they all will be set at the same time and the transition won't run. [click]");
+                    console.log("\n\nКогато смените CSS стил на елемент с Javascript, браузърът не се втърва да го сменя веднага, а всъщност изчаква няколко операции дали няма да пристигнат няколко подобни промени, които след това групира и променя наведнъж. Понякога обаче, на нас ни се налага да принудим браузъра да направи промените задължително преди да направи нещо друго.\n\nНапример, ако покажете елемент, после му поставите transition и промените няколко стила, те всички ще се приложат едновременно и анимацията няма да се изпълни. [click]");
                     break;
                 case 40:
-                    console.log("\n\nTo avoid that, you can request the element's computed style for the property you are setting or you can check one of element's dimensions, like offsetWidth, and the browser will be forced to apply the changes immediately in order to return correct results. You can now safely trigger the transition and it will run.");
+                    console.log("\n\nЗа да избегнете това, можете да поискате от браузъра computed style за това пропърти или можете да проверите някой от размерите на елемента, като например offsetWidth. Ако направите това, браузърът ще бъде принуден да приложи стиловите промени веднага, за да може да ви върне правилни резутати. Сега вече можете да стартирате transition-a и той ще направи анимацията.");
                     break;
                 case 41:
-                    console.log("\n\nThat was it. We are back in the open and managed to escape the dark forest labyrinth of mobile browser bugs, barely stumbling into a dozen of them. But the forest is deep and hungry and inviting and we know that we will have to venture alone into it at some point.\n\nMake sure you're prepared for everything and armed with sharp weapons,\n\nlike patience and creativity\n\nor you can bring a friend for a guide - like Kendo UI Mobile.\n\nEither way, know that every problem has a solution - you just haven't found it yet... [click] Thank you. ...If you have further questions, you can find me at the Kendo UI booth out there.");
+                    console.log("\n\nТова беше всичко. Излязохме обратно на светло и успяхме да се измъкнем от мрачният горски лабиринт от браузър бъгове, като срещнахме само десетина от тях. Но гората е дълбока и гладна и примамваща и ние знаем, че рано или късно ще се наложи да се върнем в нея сами.\n\nПреди да навлезете, уверете се че сте подготвени за всичко и сте въоръжени с остри оръжия..., \n\nкато търпение и креативност\n\nили пък може да доведете приятел за да ви води - като Kendo UI Mobile.\n\nКойто и път да изберете, знайте че всеки проблем има решение - просто още не сте го открили... [click] Благодаря Ви.");
             }
         }, false);
     });
